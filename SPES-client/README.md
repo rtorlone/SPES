@@ -10,7 +10,7 @@ Authors: Luca Gregori & Alessandro Wood
 - Angular-cli 13.2.6
 
 
-###Preliminary installation
+### Preliminary installation
 Run`npm install` to install missing dependencies.
 
 ## Development server
