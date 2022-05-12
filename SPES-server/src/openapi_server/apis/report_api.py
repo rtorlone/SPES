@@ -56,10 +56,15 @@ async def ask_for_medical_reports_permission(
     """Il medico richiede il permesso alla PF di visualizzare/scaricare referti medici."""
     user_id = token_bearerAuth.user_id
     user_role = token_bearerAuth.role
-    if user_role == "MED":
-        permission_service.add_permission(user_id=user_id, reports_id=request_body)
-    else:
-        return Response(status_code=status.HTTP_403_FORBIDDEN)
+    try:
+        if user_role == "MED" or user_role == "OPS":
+            permission_service.add_permission(user_id=user_id, reports_id=request_body)
+        else:
+            return Response(status_code=status.HTTP_403_FORBIDDEN)
+    except Exception as e:
+        print(e.__class__)
+        print(e)
+        return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @router.get(
@@ -124,7 +129,7 @@ async def get_all_medical_reports_by_pf_id(
     user_id = token_bearerAuth.user_id
     user_role = token_bearerAuth.role
 
-    if user_role == "MED":
+    if user_role == "MED" or user_role == 'OPS':
         try:
             return report_service.get_reports_by_user_id_and_pf_id(pf_id=id_pf, user_id=user_id)
         except ReportNotFoundError:
@@ -170,7 +175,7 @@ async def get_medical_report_by_id(
             return Response(status_code=status.HTTP_404_NOT_FOUND)
         except Exception:
             return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    elif user_role == "MED":
+    elif user_role == "MED" or user_role == "OPS":
         try:
             return report_service.get_report(user_id=user_id, report_id=id_referto)
         except ReportNotFoundError:
@@ -374,6 +379,8 @@ async def get_reports_from_session(
                                 entity_id=err.entity_id).json(),
                                 media_type="application/json")
         except Exception as err:
+            print(err.__class__)
+            print(err)
             return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                                 content=GenericErrorResponse(description=None, args=None).json(),
                                 media_type="application/json")

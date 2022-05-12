@@ -37,14 +37,16 @@ class DocumentService:
         docs_info = []
         for document in documents:
             doc_info = DocInfo(id=document.id,
-                               tipologia=document.tipologia,
-                               upload_date=document.upload_date,
-                               entity=document.entity,
-                               number=document.number,
-                               place_of_issue=document.place_of_issue,
-                               release_date=document.release_date,
-                               expiration_date=document.expiration_date)
+                            tipologia=document.tipologia,
+                            upload_date=document.upload_date,
+                            entity=document.entity,
+                            number=document.number,
+                            place_of_issue=document.place_of_issue,
+                            release_date=document.release_date,
+                            expiration_date=document.expiration_date)
+            
             docs_info.append(doc_info)
+           
         return docs_info
 
     def get_documents_by_user_id(self, pf_id: str, user_id: str):

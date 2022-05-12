@@ -1,0 +1,1314 @@
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00026s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001985s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00313s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004255s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005362s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006383s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007725s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.009212s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00035s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00204s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003323s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004903s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:49734 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00027s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:49738 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00032s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002834s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004072s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005328s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006461s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007638s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008807s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.009941s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00028s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002007s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003514s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004947s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:39336 - "GET /docs HTTP/1.1" 200
+172.22.0.1:39336 - "GET /openapi.json HTTP/1.1" 200
+172.22.0.1:39392 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+172.22.0.1:39334 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+172.22.0.1:39402 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+172.22.0.1:39438 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+172.22.0.1:39454 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00030s] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+trapped unexpected response from 'os_crypt' backend: verify('test', b'$2$04$5BJqKfqMQvV7nS.yUguNcuRfMMOXK0xPWavM7pOzjEi5ze5T1k8/S'):
+Traceback (most recent call last):
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 303, in safe_verify
+    return verify(secret, hash)
+  File "/.venv/lib/python3.9/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 837, in _calc_checksum
+    raise uh.exc.InternalBackendError(
+passlib.exc.InternalBackendError: crypt.crypt() failed for unknown reason; passlib recommends running `pip install bcrypt` for general bcrypt support.(config=<hash <class 'str'> value omitted>, secret=<hash <class 'bytes'> value omitted>)
+'os_crypt' backend lacks $2$ support, enabling workaround
+172.22.0.1:39454 - "POST /auth HTTP/1.1" 200
+172.22.0.1:39454 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[generated in 0.00091s] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:39462 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00031s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:39482 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 37.64s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:39534 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00026s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001524s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002576s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003954s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005384s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006537s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00761s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00867s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00029s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002062s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003366s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004962s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00027s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:40290 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 34.63s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:40332 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 86.71s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:40412 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00021s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00148s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002592s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003517s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004391s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005358s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00654s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007684s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00025s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001961s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00327s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004783s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:40710 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00032s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:40714 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 12.38s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:40752 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00022s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001405s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002533s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003598s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004588s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005479s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006438s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007362s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00029s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001917s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003188s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00473s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00024s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44324 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 10.68s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44364 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+172.22.0.1:44404 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[generated in 0.00033s] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:44408 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:44404 - "OPTIONS /wallet/pf/7e9d9924-d494-4408-81d0-fade3a184f4a/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 94.26s ago] {'pf_id_1': '7e9d9924-d494-4408-81d0-fade3a184f4a'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/document_repository.py", line 35, in get_documents
+    raise PersonNotFoundError(entity_id=pf_id)
+repositories.repository_exceptions.PersonNotFoundError: Person not found, id: 7e9d9924-d494-4408-81d0-fade3a184f4a
+ROLLBACK
+172.22.0.1:44408 - "GET /wallet/pf/7e9d9924-d494-4408-81d0-fade3a184f4a/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 123.8s ago] {'pf_id_1': '7e9d9924-d494-4408-81d0-fade3a184f4a'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/document_repository.py", line 35, in get_documents
+    raise PersonNotFoundError(entity_id=pf_id)
+repositories.repository_exceptions.PersonNotFoundError: Person not found, id: 7e9d9924-d494-4408-81d0-fade3a184f4a
+ROLLBACK
+172.22.0.1:44452 - "GET /wallet/pf/7e9d9924-d494-4408-81d0-fade3a184f4a/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 71.57s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:44478 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 165.8s ago] {'pf_id_1': '7e9d9924-d494-4408-81d0-fade3a184f4a'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/document_repository.py", line 35, in get_documents
+    raise PersonNotFoundError(entity_id=pf_id)
+repositories.repository_exceptions.PersonNotFoundError: Person not found, id: 7e9d9924-d494-4408-81d0-fade3a184f4a
+ROLLBACK
+172.22.0.1:44478 - "GET /wallet/pf/7e9d9924-d494-4408-81d0-fade3a184f4a/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 80.73s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:44482 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 174.3s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44482 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 216.8s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44542 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 280.5s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44618 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 287.1s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44656 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+172.22.0.1:44722 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 319.6s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44726 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00025s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001664s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.0029s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003991s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005094s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006324s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007422s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008524s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00036s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00429s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.005727s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.007302s ago] {'typname': 'marital_status_codes'}
+COMMIT
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00032s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001855s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003008s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004314s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005346s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006326s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007413s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008668s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00028s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001941s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003277s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004865s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:45936 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00027s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45940 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 5.865s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45972 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 36.59s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46042 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 55.44s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46102 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00030s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001929s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003264s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004533s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005883s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007189s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008438s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.009861s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00031s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002383s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004711s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.009111s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00038s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44370 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 17.86s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44438 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 34.9s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44470 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 37.52s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44470 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 43.55s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44508 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 268s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44712 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 273.4s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:44740 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00023s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001726s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00279s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003851s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004887s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00603s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007465s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008716s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00033s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001855s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002768s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003863s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:45038 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00027s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45042 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 472.1s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45354 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 490.2s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45410 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 500.8s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45448 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00024s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001616s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002576s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003659s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00467s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005629s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006734s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007884s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00024s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002001s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003336s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004881s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:45730 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00031s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45734 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 8.399s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:45766 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00024s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001631s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002607s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003669s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004593s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005501s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006396s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007439s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00024s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002088s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003274s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004735s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00024s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46092 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 1.364s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46092 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 2.614s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46092 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 26.95s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46154 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00024s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001814s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00286s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003896s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00496s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006071s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007131s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008297s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00025s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001869s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002988s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004468s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00033s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46654 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 2.082s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:46654 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00027s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001912s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003022s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004216s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005393s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006494s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007623s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008741s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00030s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001817s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00304s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004628s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:50178 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00024s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:50182 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 92.79s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:50330 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00022s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001605s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002673s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003715s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004846s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005908s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006943s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008024s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00024s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002084s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.003404s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004866s ago] {'typname': 'marital_status_codes'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00032s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:50516 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 33.47s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:50864 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00021s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001768s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002839s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.004021s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.005131s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.006335s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.007714s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.008696s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00021s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00182s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002974s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.004411s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:55244 - "OPTIONS /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[generated in 0.00029s] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:55248 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500
+BEGIN (implicit)
+SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document 
+WHERE person_document.pf_id = %(pf_id_1)s
+[cached since 4.47s ago] {'pf_id_1': '735e4ba5-5abb-4428-b2f3-a96555f7c0a6'}
+ROLLBACK
+172.22.0.1:55312 - "GET /wallet/pf/735e4ba5-5abb-4428-b2f3-a96555f7c0a6/docs HTTP/1.1" 500

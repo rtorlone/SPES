@@ -17,6 +17,7 @@ from fastapi import (  # noqa: F401
     Security,
     status, UploadFile, File,
 )
+import pydantic
 from pydantic.class_validators import Optional
 
 from models.doc_info import DocInfo, DocPartialInfo
@@ -115,7 +116,11 @@ async def get_identification_document_by_id(
             return document_service.get_document_by_user_id(pf_id=id_pf, doc_id=doc_id, user_id=user_id)
         else:
             return Response(status_code=status.HTTP_403_FORBIDDEN)
-    except Exception:
+    except Exception 
+    as e:
+        print(e.__class__)
+        print(e)
+        
         return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -151,7 +156,9 @@ async def get_identification_documents(
             return document_service.get_documents_by_user_id(pf_id=id_pf, user_id=user_id)
         else:
             return Response(status_code=status.HTTP_403_FORBIDDEN)
-    except Exception:
+    except Exception as e:
+        print(e.__class__)
+        print(e)
         return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -202,6 +209,8 @@ async def upload_identification_document(
             return Response(status_code=status.HTTP_404_NOT_FOUND)
         except DocumentNotFoundError:
             return Response(status_code=status.HTTP_404_NOT_FOUND)
+        except pydantic.ValidationError:
+            raise
         except Exception:
             return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:

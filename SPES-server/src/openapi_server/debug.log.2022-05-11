@@ -1,0 +1,2218 @@
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00014s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.0008693s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001367s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001856s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002346s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002841s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003343s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003838s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00012s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.0008655s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.00138s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002042s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:49460 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00016s] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+trapped unexpected response from 'os_crypt' backend: verify('test', b'$2$04$5BJqKfqMQvV7nS.yUguNcuRfMMOXK0xPWavM7pOzjEi5ze5T1k8/S'):
+Traceback (most recent call last):
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 303, in safe_verify
+    return verify(secret, hash)
+  File "/.venv/lib/python3.9/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 837, in _calc_checksum
+    raise uh.exc.InternalBackendError(
+passlib.exc.InternalBackendError: crypt.crypt() failed for unknown reason; passlib recommends running `pip install bcrypt` for general bcrypt support.(config=<hash <class 'str'> value omitted>, secret=<hash <class 'bytes'> value omitted>)
+'os_crypt' backend lacks $2$ support, enabling workaround
+172.22.0.1:49462 - "POST /auth HTTP/1.1" 200
+172.22.0.1:49460 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[generated in 0.00024s] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:49462 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:49468 - "GET /docs HTTP/1.1" 200
+172.22.0.1:49468 - "GET /openapi.json HTTP/1.1" 200
+192.168.1.96:40722 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 3667s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40722 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40724 - "POST /pf/ HTTP/1.1" 307
+BEGIN (implicit)
+INSERT INTO "user" (id, username, email, pwd, role, first_access) VALUES (%(id)s, %(username)s, %(email)s, %(pwd)s, %(role)s, %(first_access)s)
+[generated in 0.00018s] {'id': '8b5a6d18-0330-465a-a674-6c9335dc850c', 'username': 'Gen.Murolo869', 'email': None, 'pwd': '$2b$12$rLY/RclbBHVbFi2lG1aKcODpwX/2LaDqZemdNmnfJNvvOyEV2fPny', 'role': 'PF', 'first_access': True}
+INSERT INTO person (id, created_by, owner_id, user_id, is_dead, death_date, cf, cui_code, firstname, lastname, fullname, nicknames, gender, birth_date, verified, created, updated, sanitary_district_id, is_anonymous, is_foreign, birth_city, birth_geoarea_id, birth_nation_id) VALUES (%(id)s, %(created_by)s, %(owner_id)s, %(user_id)s, %(is_dead)s, %(death_date)s, %(cf)s, %(cui_code)s, %(firstname)s, %(lastname)s, %(fullname)s, %(nicknames)s, %(gender)s, %(birth_date)s, %(verified)s, %(created)s, %(updated)s, %(sanitary_district_id)s, %(is_anonymous)s, %(is_foreign)s, %(birth_city)s, %(birth_geoarea_id)s, %(birth_nation_id)s)
+[generated in 0.00022s] {'id': '5049d2d0-4402-4eef-9f19-395e40d70621', 'created_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'owner_id': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'user_id': '8b5a6d18-0330-465a-a674-6c9335dc850c', 'is_dead': False, 'death_date': None, 'cf': None, 'cui_code': '', 'firstname': 'Gennaro', 'lastname': 'Murolo', 'fullname': 'Gennaro Murolo', 'nicknames': None, 'gender': 'M', 'birth_date': None, 'verified': False, 'created': datetime.date(2022, 5, 11), 'updated': datetime.date(2022, 5, 11), 'sanitary_district_id': None, 'is_anonymous': False, 'is_foreign': False, 'birth_city': None, 'birth_geoarea_id': None, 'birth_nation_id': 'ITA'}
+COMMIT
+BEGIN (implicit)
+SELECT person.id, person.created_by, person.owner_id, person.user_id, person.is_dead, person.death_date, person.cf, person.cui_code, person.firstname, person.lastname, person.fullname, person.nicknames, person.gender, person.birth_date, person.verified, person.created, person.updated, person.sanitary_district_id, person.is_anonymous, person.is_foreign, person.birth_city, person.birth_geoarea_id, person.birth_nation_id 
+FROM person 
+WHERE person.id = %(pk_1)s
+[generated in 0.00016s] {'pk_1': '5049d2d0-4402-4eef-9f19-395e40d70621'}
+ROLLBACK
+192.168.1.96:40724 - "POST /pf HTTP/1.1" 201
+192.168.1.96:40726 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 3682s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40726 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40728 - "GET /pf/5049d2d0-4402-4eef-9f19-395e40d70621/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT anon_1.person_id AS anon_1_person_id, anon_1.person_created_by AS anon_1_person_created_by, anon_1.person_owner_id AS anon_1_person_owner_id, anon_1.person_user_id AS anon_1_person_user_id, anon_1.person_is_dead AS anon_1_person_is_dead, anon_1.person_death_date AS anon_1_person_death_date, anon_1.person_cf AS anon_1_person_cf, anon_1.person_cui_code AS anon_1_person_cui_code, anon_1.person_firstname AS anon_1_person_firstname, anon_1.person_lastname AS anon_1_person_lastname, anon_1.person_fullname AS anon_1_person_fullname, anon_1.person_nicknames AS anon_1_person_nicknames, anon_1.person_gender AS anon_1_person_gender, anon_1.person_birth_date AS anon_1_person_birth_date, anon_1.person_verified AS anon_1_person_verified, anon_1.person_created AS anon_1_person_created, anon_1.person_updated AS anon_1_person_updated, anon_1.person_sanitary_district_id AS anon_1_person_sanitary_district_id, anon_1.person_is_anonymous AS anon_1_person_is_anonymous, anon_1.person_is_foreign AS anon_1_person_is_foreign, anon_1.person_birth_city AS anon_1_person_birth_city, anon_1.person_birth_geoarea_id AS anon_1_person_birth_geoarea_id, anon_1.person_birth_nation_id AS anon_1_person_birth_nation_id, person_address_1.id AS person_address_1_id, person_address_1.created_by AS person_address_1_created_by, person_address_1.owner_id AS person_address_1_owner_id, person_address_1.pf_id AS person_address_1_pf_id, person_address_1.address_type_id AS person_address_1_address_type_id, person_address_1.geoarea_id AS person_address_1_geoarea_id, person_address_1.address AS person_address_1_address, person_address_1.from_date AS person_address_1_from_date, person_address_1.created AS person_address_1_created, person_address_1.updated AS person_address_1_updated, person_citizenship_1.id AS person_citizenship_1_id, person_citizenship_1.created_by AS person_citizenship_1_created_by, person_citizenship_1.owner_id AS person_citizenship_1_owner_id, person_citizenship_1.pf_id AS person_citizenship_1_pf_id, person_citizenship_1.nation_id AS person_citizenship_1_nation_id, person_citizenship_1.from_date AS person_citizenship_1_from_date, person_citizenship_1.created AS person_citizenship_1_created, person_citizenship_1.updated AS person_citizenship_1_updated, person_marital_status_1.id AS person_marital_status_1_id, person_marital_status_1.created_by AS person_marital_status_1_created_by, person_marital_status_1.owner_id AS person_marital_status_1_owner_id, person_marital_status_1.pf_id AS person_marital_status_1_pf_id, person_marital_status_1.marital_status_code AS person_marital_status_1_marital_status_code, person_marital_status_1.from_date AS person_marital_status_1_from_date, person_marital_status_1.created AS person_marital_status_1_created, person_marital_status_1.updated AS person_marital_status_1_updated 
+FROM (SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.id = %(id_1)s 
+ LIMIT %(param_1)s) AS anon_1 LEFT OUTER JOIN person_address AS person_address_1 ON anon_1.person_id = person_address_1.pf_id LEFT OUTER JOIN person_citizenship AS person_citizenship_1 ON anon_1.person_id = person_citizenship_1.pf_id LEFT OUTER JOIN person_marital_status AS person_marital_status_1 ON anon_1.person_id = person_marital_status_1.pf_id
+[generated in 0.00026s] {'id_1': '5049d2d0-4402-4eef-9f19-395e40d70621', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40728 - "GET /pf/5049d2d0-4402-4eef-9f19-395e40d70621 HTTP/1.1" 200
+192.168.1.96:40730 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 3682s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40730 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40732 - "PATCH /pf/5049d2d0-4402-4eef-9f19-395e40d70621/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.id = %(id_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00016s] {'id_1': '5049d2d0-4402-4eef-9f19-395e40d70621', 'param_1': 1}
+COMMIT
+BEGIN (implicit)
+SELECT person.id, person.created_by, person.owner_id, person.user_id, person.is_dead, person.death_date, person.cf, person.cui_code, person.firstname, person.lastname, person.fullname, person.nicknames, person.gender, person.birth_date, person.verified, person.created, person.updated, person.sanitary_district_id, person.is_anonymous, person.is_foreign, person.birth_city, person.birth_geoarea_id, person.birth_nation_id 
+FROM person 
+WHERE person.id = %(pk_1)s
+[cached since 14.66s ago] {'pk_1': '5049d2d0-4402-4eef-9f19-395e40d70621'}
+ROLLBACK
+192.168.1.96:40732 - "PATCH /pf/5049d2d0-4402-4eef-9f19-395e40d70621 HTTP/1.1" 200
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00013s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.000844s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001331s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001803s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002263s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002735s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003188s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003635s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00012s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.0008504s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001337s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002007s ago] {'typname': 'marital_status_codes'}
+COMMIT
+192.168.1.96:40734 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00018s] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+trapped unexpected response from 'os_crypt' backend: verify('test', b'$2$04$5BJqKfqMQvV7nS.yUguNcuRfMMOXK0xPWavM7pOzjEi5ze5T1k8/S'):
+Traceback (most recent call last):
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 303, in safe_verify
+    return verify(secret, hash)
+  File "/.venv/lib/python3.9/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 837, in _calc_checksum
+    raise uh.exc.InternalBackendError(
+passlib.exc.InternalBackendError: crypt.crypt() failed for unknown reason; passlib recommends running `pip install bcrypt` for general bcrypt support.(config=<hash <class 'str'> value omitted>, secret=<hash <class 'bytes'> value omitted>)
+'os_crypt' backend lacks $2$ support, enabling workaround
+192.168.1.96:40734 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40736 - "GET /pf/5049d2d0-4402-4eef-9f19-395e40d70621/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT anon_1.person_id AS anon_1_person_id, anon_1.person_created_by AS anon_1_person_created_by, anon_1.person_owner_id AS anon_1_person_owner_id, anon_1.person_user_id AS anon_1_person_user_id, anon_1.person_is_dead AS anon_1_person_is_dead, anon_1.person_death_date AS anon_1_person_death_date, anon_1.person_cf AS anon_1_person_cf, anon_1.person_cui_code AS anon_1_person_cui_code, anon_1.person_firstname AS anon_1_person_firstname, anon_1.person_lastname AS anon_1_person_lastname, anon_1.person_fullname AS anon_1_person_fullname, anon_1.person_nicknames AS anon_1_person_nicknames, anon_1.person_gender AS anon_1_person_gender, anon_1.person_birth_date AS anon_1_person_birth_date, anon_1.person_verified AS anon_1_person_verified, anon_1.person_created AS anon_1_person_created, anon_1.person_updated AS anon_1_person_updated, anon_1.person_sanitary_district_id AS anon_1_person_sanitary_district_id, anon_1.person_is_anonymous AS anon_1_person_is_anonymous, anon_1.person_is_foreign AS anon_1_person_is_foreign, anon_1.person_birth_city AS anon_1_person_birth_city, anon_1.person_birth_geoarea_id AS anon_1_person_birth_geoarea_id, anon_1.person_birth_nation_id AS anon_1_person_birth_nation_id, person_address_1.id AS person_address_1_id, person_address_1.created_by AS person_address_1_created_by, person_address_1.owner_id AS person_address_1_owner_id, person_address_1.pf_id AS person_address_1_pf_id, person_address_1.address_type_id AS person_address_1_address_type_id, person_address_1.geoarea_id AS person_address_1_geoarea_id, person_address_1.address AS person_address_1_address, person_address_1.from_date AS person_address_1_from_date, person_address_1.created AS person_address_1_created, person_address_1.updated AS person_address_1_updated, person_citizenship_1.id AS person_citizenship_1_id, person_citizenship_1.created_by AS person_citizenship_1_created_by, person_citizenship_1.owner_id AS person_citizenship_1_owner_id, person_citizenship_1.pf_id AS person_citizenship_1_pf_id, person_citizenship_1.nation_id AS person_citizenship_1_nation_id, person_citizenship_1.from_date AS person_citizenship_1_from_date, person_citizenship_1.created AS person_citizenship_1_created, person_citizenship_1.updated AS person_citizenship_1_updated, person_marital_status_1.id AS person_marital_status_1_id, person_marital_status_1.created_by AS person_marital_status_1_created_by, person_marital_status_1.owner_id AS person_marital_status_1_owner_id, person_marital_status_1.pf_id AS person_marital_status_1_pf_id, person_marital_status_1.marital_status_code AS person_marital_status_1_marital_status_code, person_marital_status_1.from_date AS person_marital_status_1_from_date, person_marital_status_1.created AS person_marital_status_1_created, person_marital_status_1.updated AS person_marital_status_1_updated 
+FROM (SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.id = %(id_1)s 
+ LIMIT %(param_1)s) AS anon_1 LEFT OUTER JOIN person_address AS person_address_1 ON anon_1.person_id = person_address_1.pf_id LEFT OUTER JOIN person_citizenship AS person_citizenship_1 ON anon_1.person_id = person_citizenship_1.pf_id LEFT OUTER JOIN person_marital_status AS person_marital_status_1 ON anon_1.person_id = person_marital_status_1.pf_id
+[generated in 0.00028s] {'id_1': '5049d2d0-4402-4eef-9f19-395e40d70621', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40736 - "GET /pf/5049d2d0-4402-4eef-9f19-395e40d70621 HTTP/1.1" 200
+192.168.1.96:40738 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 0.4283s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40738 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40740 - "PATCH /pf/5049d2d0-4402-4eef-9f19-395e40d70621/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.id = %(id_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00022s] {'id_1': '5049d2d0-4402-4eef-9f19-395e40d70621', 'param_1': 1}
+COMMIT
+BEGIN (implicit)
+SELECT person.id, person.created_by, person.owner_id, person.user_id, person.is_dead, person.death_date, person.cf, person.cui_code, person.firstname, person.lastname, person.fullname, person.nicknames, person.gender, person.birth_date, person.verified, person.created, person.updated, person.sanitary_district_id, person.is_anonymous, person.is_foreign, person.birth_city, person.birth_geoarea_id, person.birth_nation_id 
+FROM person 
+WHERE person.id = %(pk_1)s
+[generated in 0.00020s] {'pk_1': '5049d2d0-4402-4eef-9f19-395e40d70621'}
+ROLLBACK
+192.168.1.96:40740 - "PATCH /pf/5049d2d0-4402-4eef-9f19-395e40d70621 HTTP/1.1" 200
+192.168.1.96:40742 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 16.9s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40742 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40744 - "POST /pf/ HTTP/1.1" 307
+BEGIN (implicit)
+INSERT INTO "user" (id, username, email, pwd, role, first_access) VALUES (%(id)s, %(username)s, %(email)s, %(pwd)s, %(role)s, %(first_access)s)
+[generated in 0.00018s] {'id': '15bc21a2-70dc-4c5c-a63b-f42823d65e01', 'username': 'Rag.Mohamed Ahmed224', 'email': None, 'pwd': '$2b$12$GSPNOcOi0LVuuoSyXqI6QeapDtLcjlHDcdQvqOpz3xHq7Scjw4kDa', 'role': 'PF', 'first_access': True}
+INSERT INTO person (id, created_by, owner_id, user_id, is_dead, death_date, cf, cui_code, firstname, lastname, fullname, nicknames, gender, birth_date, verified, created, updated, sanitary_district_id, is_anonymous, is_foreign, birth_city, birth_geoarea_id, birth_nation_id) VALUES (%(id)s, %(created_by)s, %(owner_id)s, %(user_id)s, %(is_dead)s, %(death_date)s, %(cf)s, %(cui_code)s, %(firstname)s, %(lastname)s, %(fullname)s, %(nicknames)s, %(gender)s, %(birth_date)s, %(verified)s, %(created)s, %(updated)s, %(sanitary_district_id)s, %(is_anonymous)s, %(is_foreign)s, %(birth_city)s, %(birth_geoarea_id)s, %(birth_nation_id)s)
+[generated in 0.00021s] {'id': 'c5c2163a-acda-448b-87a3-158e943548ab', 'created_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'owner_id': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'user_id': '15bc21a2-70dc-4c5c-a63b-f42823d65e01', 'is_dead': False, 'death_date': None, 'cf': None, 'cui_code': '', 'firstname': 'Ragab Anuar', 'lastname': 'Mohamed Ahmed', 'fullname': 'Ragab Anwar Mohamed Ahmed', 'nicknames': None, 'gender': 'M', 'birth_date': datetime.date(1997, 9, 1), 'verified': False, 'created': datetime.date(2022, 5, 11), 'updated': datetime.date(2022, 5, 11), 'sanitary_district_id': None, 'is_anonymous': False, 'is_foreign': False, 'birth_city': None, 'birth_geoarea_id': None, 'birth_nation_id': 'EGY'}
+COMMIT
+BEGIN (implicit)
+SELECT person.id, person.created_by, person.owner_id, person.user_id, person.is_dead, person.death_date, person.cf, person.cui_code, person.firstname, person.lastname, person.fullname, person.nicknames, person.gender, person.birth_date, person.verified, person.created, person.updated, person.sanitary_district_id, person.is_anonymous, person.is_foreign, person.birth_city, person.birth_geoarea_id, person.birth_nation_id 
+FROM person 
+WHERE person.id = %(pk_1)s
+[cached since 16.66s ago] {'pk_1': 'c5c2163a-acda-448b-87a3-158e943548ab'}
+ROLLBACK
+192.168.1.96:40744 - "POST /pf HTTP/1.1" 201
+192.168.1.96:40746 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 40.44s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40746 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40748 - "POST /pf/ HTTP/1.1" 307
+BEGIN (implicit)
+INSERT INTO "user" (id, username, email, pwd, role, first_access) VALUES (%(id)s, %(username)s, %(email)s, %(pwd)s, %(role)s, %(first_access)s)
+[cached since 23.54s ago] {'id': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558', 'username': 'Nic.Nero752', 'email': None, 'pwd': '$2b$12$JDchQSSz69eQ5KMGWYbJle9xkzudeaIEvz8Whb9L4uOczTqsgnVHu', 'role': 'PF', 'first_access': True}
+INSERT INTO person (id, created_by, owner_id, user_id, is_dead, death_date, cf, cui_code, firstname, lastname, fullname, nicknames, gender, birth_date, verified, created, updated, sanitary_district_id, is_anonymous, is_foreign, birth_city, birth_geoarea_id, birth_nation_id) VALUES (%(id)s, %(created_by)s, %(owner_id)s, %(user_id)s, %(is_dead)s, %(death_date)s, %(cf)s, %(cui_code)s, %(firstname)s, %(lastname)s, %(fullname)s, %(nicknames)s, %(gender)s, %(birth_date)s, %(verified)s, %(created)s, %(updated)s, %(sanitary_district_id)s, %(is_anonymous)s, %(is_foreign)s, %(birth_city)s, %(birth_geoarea_id)s, %(birth_nation_id)s)
+[cached since 23.54s ago] {'id': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'created_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'owner_id': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'user_id': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558', 'is_dead': False, 'death_date': None, 'cf': None, 'cui_code': '', 'firstname': 'Nicu', 'lastname': 'Nero', 'fullname': 'Nicu Nero', 'nicknames': None, 'gender': 'M', 'birth_date': datetime.date(1990, 4, 2), 'verified': False, 'created': datetime.date(2022, 5, 11), 'updated': datetime.date(2022, 5, 11), 'sanitary_district_id': None, 'is_anonymous': False, 'is_foreign': False, 'birth_city': None, 'birth_geoarea_id': None, 'birth_nation_id': 'ROU'}
+COMMIT
+BEGIN (implicit)
+SELECT person.id, person.created_by, person.owner_id, person.user_id, person.is_dead, person.death_date, person.cf, person.cui_code, person.firstname, person.lastname, person.fullname, person.nicknames, person.gender, person.birth_date, person.verified, person.created, person.updated, person.sanitary_district_id, person.is_anonymous, person.is_foreign, person.birth_city, person.birth_geoarea_id, person.birth_nation_id 
+FROM person 
+WHERE person.id = %(pk_1)s
+[cached since 40.2s ago] {'pk_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40748 - "POST /pf HTTP/1.1" 201
+172.22.0.1:49476 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 92.63s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:49476 - "POST /auth HTTP/1.1" 200
+172.22.0.1:49476 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[generated in 0.00026s] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:49478 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:49482 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 109.3s ago] {'username_1': 'Nic.Nero752', 'param_1': 1}
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".id = %(id_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00030s] {'id_1': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558', 'param_1': 1}
+UPDATE "user" SET first_access=%(first_access)s WHERE "user".id = %(user_id)s
+[generated in 0.00024s] {'first_access': False, 'user_id': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558'}
+COMMIT
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.user_id = %(user_id_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00024s] {'user_id_1': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558', 'param_1': 1}
+ROLLBACK
+172.22.0.1:49484 - "POST /auth HTTP/1.1" 200
+172.22.0.1:49488 - "OPTIONS /user/pf HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM (SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person 
+WHERE person.id = %(id_1)s) AS anon_1 JOIN "user" ON "user".id = anon_1.person_user_id 
+ LIMIT %(param_1)s
+[generated in 0.00031s] {'id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'param_1': 1}
+UPDATE "user" SET pwd=%(pwd)s WHERE "user".id = %(user_id)s
+[generated in 0.00021s] {'pwd': '$2b$12$4o7gJuheY3PMrzaaWrup/.WK9wVSbVLG6paixsD8I9rwdu8ckSHFe', 'user_id': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558'}
+COMMIT
+BEGIN (implicit)
+SELECT "user".id, "user".username, "user".email, "user".pwd, "user".role, "user".first_access 
+FROM "user" 
+WHERE "user".id = %(pk_1)s
+[generated in 0.00016s] {'pk_1': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558'}
+ROLLBACK
+172.22.0.1:49490 - "PATCH /user/pf HTTP/1.1" 200
+172.22.0.1:49492 - "OPTIONS /wallet/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT anon_1.person_document_id AS anon_1_person_document_id, anon_1.person_document_pf_id AS anon_1_person_document_pf_id, anon_1.person_document_upload_by AS anon_1_person_document_upload_by, anon_1.person_document_tipologia AS anon_1_person_document_tipologia, anon_1.person_document_entity AS anon_1_person_document_entity, anon_1.person_document_number AS anon_1_person_document_number, anon_1.person_document_place_of_issue AS anon_1_person_document_place_of_issue, anon_1.person_document_release_date AS anon_1_person_document_release_date, anon_1.person_document_upload_date AS anon_1_person_document_upload_date, anon_1.person_document_expiration_date AS anon_1_person_document_expiration_date, anon_1.person_document_path AS anon_1_person_document_path 
+FROM (SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document, person 
+WHERE person_document.pf_id = %(pf_id_1)s AND person.user_id = %(user_id_1)s) AS anon_1 JOIN person ON person.id = anon_1.person_document_pf_id
+[generated in 0.00020s] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'user_id_1': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/document_repository.py", line 51, in get_documents_by_user_id
+    raise UserNotFoundError(entity_id=user_id)
+repositories.repository_exceptions.UserNotFoundError: User not found, id: 1f2e88ee-d8c3-4e35-9d59-f47b44e0c558
+ROLLBACK
+172.22.0.1:49490 - "GET /wallet/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/docs HTTP/1.1" 500
+192.168.1.96:40750 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 157.7s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40750 - "POST /auth HTTP/1.1" 200
+Calling on_part_begin with no data
+Calling on_header_field with data[44:63]
+Calling on_header_value with data[65:131]
+Calling on_header_end with no data
+Calling on_header_field with data[133:147]
+Calling on_header_value with data[149:155]
+Calling on_header_end with no data
+Calling on_header_field with data[157:169]
+Calling on_header_value with data[171:186]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[190:10220]
+Calling on_part_data with data[0:1997]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[1998:16966]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[16968:19280]
+Calling on_part_data with data[0:77010]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[77011:148403]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[148404:161268]
+Calling on_part_data with data[0:2920]
+Calling on_part_data with data[0:2776]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[2777:19217]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[19218:24813]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[24814:24820]
+Calling on_part_data with data[0:16441]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[16443:76404]
+Calling on_part_data with data[0:19547]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[19549:19647]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[19649:19747]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[19749:19847]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[19849:19987]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[19989:20087]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20089:20187]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20189:20327]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20329:20427]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20429:20527]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20529:20627]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20629:20727]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20729:20867]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20869:20967]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20969:21107]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21109:21207]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21209:21307]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21309:21407]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21409:21507]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21509:21647]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21649:21747]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21749:21887]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21889:21987]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21989:22087]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22089:22187]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22189:22287]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22289:22387]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22389:22487]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22489:22627]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22629:22767]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22769:22867]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22869:22967]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[22969:23107]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[23109:23207]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[23209:23307]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[23309:23447]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[23449:23547]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[23549:23796]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[23842:23861]
+Calling on_header_value with data[23863:23890]
+Calling on_header_end with no data
+Calling on_header_field with data[23892:23906]
+Calling on_header_value with data[23908:23909]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[23913:23922]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[23968:23987]
+Calling on_header_value with data[23989:24013]
+Calling on_header_end with no data
+Calling on_header_field with data[24015:24029]
+Calling on_header_value with data[24031:24032]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[24036:24045]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[24091:24110]
+Calling on_header_value with data[24112:24142]
+Calling on_header_end with no data
+Calling on_header_field with data[24144:24158]
+Calling on_header_value with data[24160:24162]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[24166:24185]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[24231:24250]
+Calling on_header_value with data[24252:24285]
+Calling on_header_end with no data
+Calling on_header_field with data[24287:24301]
+Calling on_header_value with data[24303:24305]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[24309:24328]
+Calling on_part_end with no data
+Calling on_end with no data
+BEGIN (implicit)
+INSERT INTO person_document (id, pf_id, upload_by, tipologia, entity, number, place_of_issue, release_date, upload_date, expiration_date, path) VALUES (%(id)s, %(pf_id)s, %(upload_by)s, %(tipologia)s, %(entity)s, %(number)s, %(place_of_issue)s, %(release_date)s, %(upload_date)s, %(expiration_date)s, %(path)s)
+[generated in 0.00017s] {'id': '2fe77ec0-e1a5-4eb5-a9c1-50ca46648cca', 'pf_id': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'upload_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'tipologia': 'documento', 'entity': 'ANThology', 'number': None, 'place_of_issue': None, 'release_date': '2022-05-11 09:08:46', 'upload_date': datetime.date(2022, 5, 11), 'expiration_date': '2022-05-11 09:08:46', 'path': '../../documents/2fe77ec0-e1a5-4eb5-a9c1-50ca46648cca.pdf'}
+COMMIT
+BEGIN (implicit)
+SELECT person_document.id, person_document.pf_id, person_document.upload_by, person_document.tipologia, person_document.entity, person_document.number, person_document.place_of_issue, person_document.release_date, person_document.upload_date, person_document.expiration_date, person_document.path 
+FROM person_document 
+WHERE person_document.id = %(pk_1)s
+[generated in 0.00016s] {'pk_1': '2fe77ec0-e1a5-4eb5-a9c1-50ca46648cca'}
+ROLLBACK
+192.168.1.96:40752 - "POST /wallet/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/docs/upload HTTP/1.1" 200
+172.22.0.1:49494 - "OPTIONS /permissions HTTP/1.1" 200
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM (SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM person_report) AS anon_1 JOIN permission ON anon_1.person_report_id = permission.document_id 
+WHERE anon_1.person_report_pf_id = %(pf_id_1)s AND permission.pending = true
+[generated in 0.00022s] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 135, in get_permissions_in_pending_by_pf_id
+    raise PermissionNotFoundError(entity_id=None)
+repositories.repository_exceptions.PermissionNotFoundError: Permission not found, id: None
+ROLLBACK
+172.22.0.1:49496 - "GET /permissions HTTP/1.1" 404
+BEGIN (implicit)
+SELECT anon_1.person_document_id AS anon_1_person_document_id, anon_1.person_document_pf_id AS anon_1_person_document_pf_id, anon_1.person_document_upload_by AS anon_1_person_document_upload_by, anon_1.person_document_tipologia AS anon_1_person_document_tipologia, anon_1.person_document_entity AS anon_1_person_document_entity, anon_1.person_document_number AS anon_1_person_document_number, anon_1.person_document_place_of_issue AS anon_1_person_document_place_of_issue, anon_1.person_document_release_date AS anon_1_person_document_release_date, anon_1.person_document_upload_date AS anon_1_person_document_upload_date, anon_1.person_document_expiration_date AS anon_1_person_document_expiration_date, anon_1.person_document_path AS anon_1_person_document_path 
+FROM (SELECT person_document.id AS person_document_id, person_document.pf_id AS person_document_pf_id, person_document.upload_by AS person_document_upload_by, person_document.tipologia AS person_document_tipologia, person_document.entity AS person_document_entity, person_document.number AS person_document_number, person_document.place_of_issue AS person_document_place_of_issue, person_document.release_date AS person_document_release_date, person_document.upload_date AS person_document_upload_date, person_document.expiration_date AS person_document_expiration_date, person_document.path AS person_document_path 
+FROM person_document, person 
+WHERE person_document.pf_id = %(pf_id_1)s AND person.user_id = %(user_id_1)s) AS anon_1 JOIN person ON person.id = anon_1.person_document_pf_id
+[cached since 36.42s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'user_id_1': '1f2e88ee-d8c3-4e35-9d59-f47b44e0c558'}
+ROLLBACK
+172.22.0.1:49496 - "GET /wallet/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/docs HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 275.8s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:49498 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 279.4s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:49498 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+192.168.1.96:40792 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9526s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40792 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40794 - "GET /reports/pf//110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 404
+192.168.1.96:40796 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9614s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40796 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40798 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[generated in 0.00015s] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 40, in get_reports
+    raise ReportNotFoundError(pf_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 110b957b-c611-45e3-87f4-b1d5d4ce4116
+ROLLBACK
+192.168.1.96:40798 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 404
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9661s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:49558 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 79.16s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 40, in get_reports
+    raise ReportNotFoundError(pf_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 110b957b-c611-45e3-87f4-b1d5d4ce4116
+ROLLBACK
+172.22.0.1:49560 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 404
+192.168.1.96:40800 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9764s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40800 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40804 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 149.6s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 40, in get_reports
+    raise ReportNotFoundError(pf_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 110b957b-c611-45e3-87f4-b1d5d4ce4116
+ROLLBACK
+192.168.1.96:40804 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 404
+172.22.0.1:49564 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:49566 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 500
+172.22.0.1:49568 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9827s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:49568 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 9735s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:49570 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:49572 - "OPTIONS /reports/upload HTTP/1.1" 200
+Calling on_part_begin with no data
+Calling on_header_field with data[42:61]
+Calling on_header_value with data[63:86]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[90:126]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[170:189]
+Calling on_header_value with data[191:214]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[218:227]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[271:290]
+Calling on_header_value with data[292:344]
+Calling on_header_end with no data
+Calling on_header_field with data[346:358]
+Calling on_header_value with data[360:375]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[379:888]
+Calling on_part_data with data[0:1]
+Calling on_part_data with data[889:81920]
+Calling on_part_data with data[0:20009]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20011:20349]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20351:20689]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[20691:21029]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[21031:21479]
+Calling on_part_end with no data
+Calling on_end with no data
+BEGIN (implicit)
+INSERT INTO person_report (id, pf_id, title, upload_date, path, upload_by) VALUES (%(id)s, %(pf_id)s, %(title)s, %(upload_date)s, %(path)s, %(upload_by)s)
+[generated in 0.00016s] {'id': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'pf_id': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'title': 'referto 1', 'upload_date': datetime.date(2022, 5, 11), 'path': '../../reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911.pdf', 'upload_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92'}
+COMMIT
+BEGIN (implicit)
+SELECT person_report.id, person_report.pf_id, person_report.title, person_report.upload_date, person_report.path, person_report.upload_by 
+FROM person_report 
+WHERE person_report.id = %(pk_1)s
+[generated in 0.00019s] {'pk_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911'}
+ROLLBACK
+172.22.0.1:49574 - "POST /reports/upload HTTP/1.1" 200
+192.168.1.96:40806 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9864s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40806 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40808 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 250.1s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40808 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 272s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+172.22.0.1:49576 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:49580 - "GET /docs HTTP/1.1" 200
+172.22.0.1:49580 - "GET /openapi.json HTTP/1.1" 200
+192.168.1.96:40810 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 9957s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40810 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40812 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 342.3s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40812 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:49578 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116%09 HTTP/1.1" 403
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.002e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:49582 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 418.7s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116\t'}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 40, in get_reports
+    raise ReportNotFoundError(pf_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 110b957b-c611-45e3-87f4-b1d5d4ce4116	
+ROLLBACK
+172.22.0.1:49584 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116%09 HTTP/1.1" 404
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 469.8s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+172.22.0.1:49588 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40814 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.148e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40814 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40816 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1861s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40816 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40820 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.151e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40820 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40822 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1892s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40822 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40824 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.154e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40824 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40826 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1925s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40826 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40828 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.155e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40828 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40830 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1937s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40830 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40832 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.158e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40832 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40834 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1964s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40834 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40836 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.159e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40836 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40838 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1977s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40838 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40840 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.161e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40840 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40842 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 1992s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40842 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40844 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.164e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40844 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40846 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2022s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40846 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40848 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.168e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40848 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40850 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2061s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40850 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40852 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.17e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40852 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40854 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2083s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40854 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:49606 - "OPTIONS /reports/upload HTTP/1.1" 200
+Calling on_part_begin with no data
+Calling on_header_field with data[42:61]
+Calling on_header_value with data[63:86]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[90:126]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[170:189]
+Calling on_header_value with data[191:214]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[218:223]
+Calling on_part_end with no data
+Calling on_part_begin with no data
+Calling on_header_field with data[267:286]
+Calling on_header_value with data[288:359]
+Calling on_header_end with no data
+Calling on_header_field with data[361:373]
+Calling on_header_value with data[375:390]
+Calling on_header_end with no data
+Calling on_headers_finished with no data
+Calling on_part_data with data[394:66649]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[66651:66656]
+Calling on_part_data with data[0:2]
+Calling on_part_data with data[66658:66663]
+Calling on_part_data with data[0:2]
+Calling on_part_end with no data
+Calling on_end with no data
+BEGIN (implicit)
+INSERT INTO person_report (id, pf_id, title, upload_date, path, upload_by) VALUES (%(id)s, %(pf_id)s, %(title)s, %(upload_date)s, %(path)s, %(upload_by)s)
+[cached since 2017s ago] {'id': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'pf_id': '110b957b-c611-45e3-87f4-b1d5d4ce4116', 'title': 'doc 2', 'upload_date': datetime.date(2022, 5, 11), 'path': '../../reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac.pdf', 'upload_by': '5fea1180-5f80-4e11-a9ff-689e5201ec92'}
+COMMIT
+BEGIN (implicit)
+SELECT person_report.id, person_report.pf_id, person_report.title, person_report.upload_date, person_report.path, person_report.upload_by 
+FROM person_report 
+WHERE person_report.id = %(pk_1)s
+[cached since 2017s ago] {'pk_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+ROLLBACK
+172.22.0.1:49608 - "POST /reports/upload HTTP/1.1" 200
+192.168.1.96:40856 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.187e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40856 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40858 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2251s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40858 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40862 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.189e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40862 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40864 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2272s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40864 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40866 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.193e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40866 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40868 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2316s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40868 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40874 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.196e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40874 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40876 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2341s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40876 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40878 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.198e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40878 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40880 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2368s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40880 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40882 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1.202e+04s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40882 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40884 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2403s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40884 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[generated in 0.00029s] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: c148f6fc-822a-44e2-bbfe-b2182ad9b2ac
+ROLLBACK
+172.22.0.1:49626 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 404
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 32.89s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: c148f6fc-822a-44e2-bbfe-b2182ad9b2ac
+ROLLBACK
+172.22.0.1:49628 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 404
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+select pg_catalog.version()
+[raw sql] {}
+select current_schema()
+[raw sql] {}
+show standard_conforming_strings
+[raw sql] {}
+BEGIN (implicit)
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[generated in 0.00014s] {'name': 'person_document'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.0009415s ago] {'name': 'person'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001449s ago] {'name': 'person_address'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.001938s ago] {'name': 'person_citizenship'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002419s ago] {'name': 'person_marital_status'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.002893s ago] {'name': 'user'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.00338s ago] {'name': 'person_report'}
+select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[cached since 0.003849s ago] {'name': 'permission'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[generated in 0.00019s] {'typname': 'gender'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.0008691s ago] {'typname': 'alpha3_codes'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.001379s ago] {'typname': 'address_types'}
+
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[cached since 0.002046s ago] {'typname': 'marital_status_codes'}
+COMMIT
+172.22.0.1:46852 - "GET /docs HTTP/1.1" 200
+172.22.0.1:46852 - "GET /openapi.json HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[generated in 0.00019s] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+trapped unexpected response from 'os_crypt' backend: verify('test', b'$2$04$5BJqKfqMQvV7nS.yUguNcuRfMMOXK0xPWavM7pOzjEi5ze5T1k8/S'):
+Traceback (most recent call last):
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 303, in safe_verify
+    return verify(secret, hash)
+  File "/.venv/lib/python3.9/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+  File "/.venv/lib/python3.9/site-packages/passlib/handlers/bcrypt.py", line 837, in _calc_checksum
+    raise uh.exc.InternalBackendError(
+passlib.exc.InternalBackendError: crypt.crypt() failed for unknown reason; passlib recommends running `pip install bcrypt` for general bcrypt support.(config=<hash <class 'str'> value omitted>, secret=<hash <class 'bytes'> value omitted>)
+'os_crypt' backend lacks $2$ support, enabling workaround
+172.22.0.1:46848 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[generated in 0.00029s] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: c148f6fc-822a-44e2-bbfe-b2182ad9b2ac
+ROLLBACK
+172.22.0.1:46856 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 404
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 139.8s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+172.22.0.1:46860 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:40896 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 985.7s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40896 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40898 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[generated in 0.00014s] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40898 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40900 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1029s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40900 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40902 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 43.4s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40902 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40904 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 1051s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40904 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40906 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 65.23s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40906 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40912 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 3469s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40912 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40914 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 2483s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40914 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40918 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 3748s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40918 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40920 - "POST /permissions/ HTTP/1.1" 307
+192.168.1.96:40920 - "POST /permissions HTTP/1.1" 422
+192.168.1.96:40922 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 4199s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40922 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40924 - "POST /permissions/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (%(document_id_1_1)s)
+[generated in 0.00036s] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+ROLLBACK
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (%(document_id_1_1)s)
+[cached since 0.001963s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+UPDATE permission SET pending=%(pending)s WHERE permission.user_id = %(permission_user_id)s AND permission.document_id = %(permission_document_id)s
+[generated in 0.00014s] {'pending': True, 'permission_user_id': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'permission_document_id': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+COMMIT
+192.168.1.96:40924 - "POST /permissions HTTP/1.1" 200
+192.168.1.96:40926 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 4301s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40926 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40928 - "POST /permissions/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (%(document_id_1_1)s)
+[cached since 102.2s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+ROLLBACK
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (%(document_id_1_1)s)
+[cached since 102.2s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac'}
+COMMIT
+192.168.1.96:40928 - "POST /permissions HTTP/1.1" 200
+192.168.1.96:40930 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 4373s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40930 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40932 - "POST /permissions/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (%(document_id_1_1)s)
+[cached since 174.5s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911'}
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO permission (user_id, document_id, permission, created, pending) VALUES (%(user_id)s, %(document_id)s, %(permission)s, %(created)s, %(pending)s)
+[generated in 0.00023s] {'user_id': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'permission': False, 'created': datetime.date(2022, 5, 11), 'pending': True}
+COMMIT
+BEGIN (implicit)
+SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id IN (NULL) AND (1 != 1)
+[cached since 174.6s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92'}
+ROLLBACK
+192.168.1.96:40932 - "POST /permissions HTTP/1.1" 200
+172.22.0.1:46912 - "GET /docs HTTP/1.1" 200
+172.22.0.1:46912 - "GET /openapi.json HTTP/1.1" 200
+192.168.1.96:40936 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5442s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40936 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40938 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4456s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40938 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40940 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5551s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40940 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40944 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4566s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40944 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40946 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5558s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40946 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40950 - "POST /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 405
+192.168.1.96:40952 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5601s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40952 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40954 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4615s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40954 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40956 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5615s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40956 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40958 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4630s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40958 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40960 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5619s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40960 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40962 - "POST /reports/ HTTP/1.1" 307
+192.168.1.96:40962 - "POST /reports HTTP/1.1" 405
+192.168.1.96:40964 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5817s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40964 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40966 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4831s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40966 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40968 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5881s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40968 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40970 - "POST /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 405
+192.168.1.96:40972 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5897s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40972 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5818s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40974 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:40976 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5910s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40976 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5831s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 24b13df5-c7cc-4cee-8df4-dbc7ad341911
+ROLLBACK
+192.168.1.96:40980 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 404
+192.168.1.96:40984 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5933s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40984 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5855s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40986 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:40988 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5980s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40988 - "POST /auth HTTP/1.1" 200
+192.168.1.96:40990 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 4995s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:40990 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:40992 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 5988s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40992 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5910s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 24b13df5-c7cc-4cee-8df4-dbc7ad341911
+ROLLBACK
+192.168.1.96:40994 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 404
+192.168.1.96:40996 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6005s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40996 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5926s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:40998 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41000 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6015s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41000 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41002 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5029s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41002 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41004 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6020s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41004 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 5941s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41006 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41008 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6381s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41008 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41010 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5395s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41010 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41012 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6385s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41012 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6306s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41014 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41018 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6409s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41018 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41020 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5424s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41020 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41024 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6413s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41024 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6335s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41026 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41028 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6425s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41028 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41030 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5439s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41030 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41032 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6430s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41032 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6351s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41034 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41038 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6750s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41038 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6671s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41040 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41042 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6762s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41042 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41044 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5776s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41044 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41046 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6767s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41046 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6689s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41048 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41050 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6957s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41050 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41052 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 5971s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41052 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41054 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6964s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41054 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6886s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41056 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41058 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6975s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41058 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6896s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+Session rollback because of exception
+Traceback (most recent call last):
+  File "/home/SPES/src/openapi_server/./database/database.py", line 48, in session
+    yield session
+  File "/home/SPES/src/openapi_server/./repositories/report_repository.py", line 75, in get_report
+    raise ReportNotFoundError(entity_id=report_id)
+repositories.repository_exceptions.ReportNotFoundError: Report not found, id: 24b13df5-c7cc-4cee-8df4-dbc7ad341911
+ROLLBACK
+192.168.1.96:41060 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 404
+192.168.1.96:41062 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 6984s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41062 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 6905s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41066 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41070 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7458s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41070 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41072 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 6472s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41072 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41074 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7462s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41074 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7384s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41076 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+172.22.0.1:46968 - "OPTIONS /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:46970 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 500
+172.22.0.1:46972 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 500
+172.22.0.1:46974 - "OPTIONS /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7500s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:46974 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[generated in 0.00020s] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:46978 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7512s ago] {'username_1': 'med', 'param_1': 1}
+ROLLBACK
+172.22.0.1:46982 - "POST /auth HTTP/1.1" 500
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7516s ago] {'username_1': 'med', 'param_1': 1}
+ROLLBACK
+172.22.0.1:46984 - "POST /auth HTTP/1.1" 500
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7522s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+172.22.0.1:46986 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person.id AS person_id, person.created_by AS person_created_by, person.owner_id AS person_owner_id, person.user_id AS person_user_id, person.is_dead AS person_is_dead, person.death_date AS person_death_date, person.cf AS person_cf, person.cui_code AS person_cui_code, person.firstname AS person_firstname, person.lastname AS person_lastname, person.fullname AS person_fullname, person.nicknames AS person_nicknames, person.gender AS person_gender, person.birth_date AS person_birth_date, person.verified AS person_verified, person.created AS person_created, person.updated AS person_updated, person.sanitary_district_id AS person_sanitary_district_id, person.is_anonymous AS person_is_anonymous, person.is_foreign AS person_is_foreign, person.birth_city AS person_birth_city, person.birth_geoarea_id AS person_birth_geoarea_id, person.birth_nation_id AS person_birth_nation_id 
+FROM person ORDER BY person.firstname DESC, person.lastname DESC, person.nicknames DESC, person.cf DESC 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+[cached since 21.83s ago] {'param_1': 10, 'param_2': 0}
+ROLLBACK
+172.22.0.1:46988 - "GET /search/pf?firstname=&lastname=&nicknames= HTTP/1.1" 200
+172.22.0.1:46990 - "OPTIONS /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:46992 - "OPTIONS /session/reports HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 6545s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+172.22.0.1:46994 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:46996 - "GET /session/reports HTTP/1.1" 404
+172.22.0.1:47000 - "OPTIONS /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7462s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+172.22.0.1:47002 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41078 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7668s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41078 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7590s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41080 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 6766s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+172.22.0.1:47008 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+172.22.0.1:47010 - "GET /session/reports HTTP/1.1" 404
+172.22.0.1:47012 - "OPTIONS /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7675s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+ROLLBACK
+172.22.0.1:47010 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 200
+192.168.1.96:41082 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7876s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41082 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7798s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41084 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 200
+192.168.1.96:41086 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7885s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41086 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41088 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 6900s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41088 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41090 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 7893s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41090 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 7814s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41092 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41094 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 8447s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41094 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41096 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 7461s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41096 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41098 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 8451s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41098 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 8373s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41100 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200
+192.168.1.96:41102 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 8467s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41102 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 8389s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': '24b13df5-c7cc-4cee-8df4-dbc7ad341911', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41104 - "GET /reports/24b13df5-c7cc-4cee-8df4-dbc7ad341911 HTTP/1.1" 200
+192.168.1.96:41106 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 8771s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41106 - "POST /auth HTTP/1.1" 200
+192.168.1.96:41108 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by, permission_1.user_id AS permission_1_user_id, permission_1.document_id AS permission_1_document_id, permission_1.permission AS permission_1_permission, permission_1.created AS permission_1_created, permission_1.pending AS permission_1_pending 
+FROM person_report LEFT OUTER JOIN permission AS permission_1 ON person_report.id = permission_1.document_id 
+WHERE person_report.pf_id = %(pf_id_1)s
+[cached since 7785s ago] {'pf_id_1': '110b957b-c611-45e3-87f4-b1d5d4ce4116'}
+ROLLBACK
+192.168.1.96:41108 - "GET /reports/pf/110b957b-c611-45e3-87f4-b1d5d4ce4116 HTTP/1.1" 200
+192.168.1.96:41110 - "POST /auth/ HTTP/1.1" 307
+BEGIN (implicit)
+SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".pwd AS user_pwd, "user".role AS user_role, "user".first_access AS user_first_access 
+FROM "user" 
+WHERE "user".username = %(username_1)s 
+ LIMIT %(param_1)s
+[cached since 8775s ago] {'username_1': 'admin', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41110 - "POST /auth HTTP/1.1" 200
+BEGIN (implicit)
+SELECT person_report.id AS person_report_id, person_report.pf_id AS person_report_pf_id, person_report.title AS person_report_title, person_report.upload_date AS person_report_upload_date, person_report.path AS person_report_path, person_report.upload_by AS person_report_upload_by 
+FROM (SELECT permission.user_id AS permission_user_id, permission.document_id AS permission_document_id, permission.permission AS permission_permission, permission.created AS permission_created, permission.pending AS permission_pending 
+FROM permission 
+WHERE permission.user_id = %(user_id_1)s AND permission.document_id = %(document_id_1)s AND permission.permission) AS anon_1 JOIN person_report ON person_report.id = anon_1.permission_document_id 
+ LIMIT %(param_1)s
+[cached since 8697s ago] {'user_id_1': '5fea1180-5f80-4e11-a9ff-689e5201ec92', 'document_id_1': 'c148f6fc-822a-44e2-bbfe-b2182ad9b2ac', 'param_1': 1}
+ROLLBACK
+192.168.1.96:41112 - "GET /reports/c148f6fc-822a-44e2-bbfe-b2182ad9b2ac HTTP/1.1" 200

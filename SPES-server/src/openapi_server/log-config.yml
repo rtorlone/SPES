@@ -1,0 +1,21 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+    info_file_handler:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: DEBUG
+        filename: debug.log
+        when: 'midnight'
+        backupCount: 4
+        utc: True
+        encoding: utf8
+loggers:
+  simpleExample:
+    level: DEBUG
+    handlers: [info_file_handler]
+    propagate: yes
+root:
+  level: DEBUG
+  handlers: [info_file_handler]

@@ -1,9 +1,9 @@
 db:
-  url: "postgresql://root:root@localhost/spes"
+  url: "postgresql://postgres:postgres@postgres/spes"
   drop_on_startup: false
-  startup_sql_path: null
+  #startup_sql_path: "startup.sql"
 redis:
-  host: "localhost"
+  host: "cache"
   port: 6379
   db: 1
   password: "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"

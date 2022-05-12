@@ -184,6 +184,7 @@ class PfUserInfo(BaseModel):
     """
     username: str
     password: str
+    pf_id: UUID
 
 
 PfInfoWithIds.update_forward_refs()
