@@ -1,0 +1,208 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Persona fragile</mat-card-title>
+    <mat-card-subtitle>Aggiorna i dati anagrafici</mat-card-subtitle>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+    <form [formGroup]="PFForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Mario" formControlName="firstname">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cognome</mat-label>
+          <input matInput placeholder="Rossi" formControlName="lastname">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-checkbox class="example-margin" name="is_anonymous" formControlName="is_anonymous"
+                      (change)="anonymousCheckBoxChange($event)">Anonimo
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome completo</mat-label>
+          <input matInput placeholder="Mario Rossi" formControlName="fullname">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>CUI code</mat-label>
+          <input matInput placeholder="" formControlName="cui_code">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Codice Fiscale</mat-label>
+          <input matInput placeholder="" formControlName="cf">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nicknames</mat-label>
+          <input matInput placeholder="Pierino" formControlName="nicknames">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Genere</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="M">Maschio</mat-option>
+            <mat-option value="F">Femmina</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <mat-divider></mat-divider>
+      <br>
+      <p style="text-align:center;">
+        <mat-checkbox class="example-margin" name="is_foreign" formControlName="is_foreign"
+                      (change)="foreignCheckBoxChange($event)">Straniero
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label> Nazione di nascita</mat-label>
+          <mat-select formControlName="birth_nation_id">
+            <mat-option>---</mat-option>
+            <mat-option *ngFor="let country of countriesName" [value]="getAlphaCode(country, 'it')">
+              {{country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Citta</mat-label>
+          <input matInput placeholder="Roma" formControlName="birth_city">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Geo area ID</mat-label>
+          <input matInput placeholder="GeoArea" formControlName="birth_geoarea_id">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Data di nascita</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="birth_date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+      </p>
+      <br>
+      <p style="text-align:center;">
+        <mat-checkbox class="example-margin" name="is_dead" formControlName="is_dead"
+                      (change)="deadCheckBoxChange($event)">Morto
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Data di morte</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="death_date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </p>
+
+      <br>
+      <mat-divider></mat-divider>
+
+      <div formArrayName="citizenship">
+        <h4>Cittadinanze</h4>
+        <div *ngFor="let citizenship of getCitizenshipForm.controls; let i=index">
+          <div [formGroupName]="i">
+            <p>Cittadinanza {{i + 1}}
+            </p>
+            <mat-form-field appearance="outline">
+              <mat-label> Seleziona un paese</mat-label>
+              <mat-select formControlName="nation_id">
+                <mat-option>---</mat-option>
+                <mat-option *ngFor="let country of countriesName" [value]="getAlphaCode(country, 'it')">
+                  {{country}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Data</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="from_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <mat-divider></mat-divider>
+
+      <div formArrayName="maritalStatus">
+        <h4>Stato Civile</h4>
+        <div *ngFor="let maritalStatus of getMartialsStatusForm.controls; let i=index">
+          <!-- The repeated alias template -->
+          <div [formGroupName]="i">
+            <p>Stato Civile {{i + 1}}
+
+            </p>
+            <mat-form-field appearance="outline">
+              <mat-label>Seleziona uno stato civile</mat-label>
+              <mat-select formControlName="marital_status_code">
+                <mat-option>Nessuno</mat-option>
+                <mat-option value="COH">Convivente</mat-option>
+                <mat-option value="DIV">Divorziato</mat-option>
+                <mat-option value="LSE">Separato legalmente</mat-option>
+                <mat-option value="MAR">Coniugato/a</mat-option>
+                <mat-option value="SIN">Single</mat-option>
+                <mat-option value="WID">Vedovo/a</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Data</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="from_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <mat-divider></mat-divider>
+
+      <div formArrayName="addresses">
+        <h4>Indirizzi</h4>
+        <div *ngFor="let address of getAddressesForm.controls; let i=index">
+          <div [formGroupName]="i">
+            <p>Indirizzo {{i + 1}}
+            </p>
+            <mat-form-field appearance="outline">
+              <mat-label>Indirizzo</mat-label>
+              <input matInput placeholder="Via Roma" formControlName="address">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Seleziona un tipo</mat-label>
+              <mat-select formControlName="address_type_id">
+                <mat-option>---</mat-option>
+                <mat-option value="FIX">Residenza</mat-option>
+                <mat-option value="CUR">Domicilio</mat-option>
+                <mat-option value="VIR">Residenza virtuale/fittizia</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Geo area ID (?!?!?!?)</mat-label>
+              <input matInput placeholder="GeoArea" formControlName="geoarea_id">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Data</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="from_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <br>
+    </form>
+  </mat-card-content>
+</mat-card>
+

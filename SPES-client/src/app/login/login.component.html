@@ -1,0 +1,27 @@
+<br>
+<br>
+<br>
+<div class="center">
+  <span class="logo logo-left">SPES</span>
+  <span class="logo logo-right">Client</span>
+</div>
+<br>
+<br>
+
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit()">
+
+  <div class="form-group login">
+    <label>Username</label>
+    <input class="form-control login" #Username="ngModel" name="Username" [(ngModel)]="formModel.username" required>
+  </div>
+  <div class="form-group login">
+    <label>Password</label>
+    <input type="password" class="form-control login" #Password="ngModel" name="Password"
+           [(ngModel)]="formModel.password" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4 offset-md-4 ">
+      <button type="submit" class="btn btn-middle btn-success" [disabled]="form.invalid">Login</button>
+    </div>
+  </div>
+</form>

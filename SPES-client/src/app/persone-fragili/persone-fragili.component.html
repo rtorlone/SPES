@@ -1,0 +1,66 @@
+<mat-card class="example-card">
+<div>
+  <div class="filter-wrap">
+    <input [(ngModel)]="searchText" placeholder="Filter By Nome" class="filter-input">
+    <span class="filter-clear" *ngIf="searchText.length>0" (click)="clearFilter()">X</span>
+    <br>
+    <input style="margin-top: 10px;" [(ngModel)]="searchText2" placeholder="Filter By Cognome" class="filter-input">
+    <span class="filter-clear" *ngIf="searchText2.length>0" (click)="clearFilter2()">X</span>
+    <br>
+    <input style="margin-top: 10px;" [(ngModel)]="searchText3" placeholder="Filter by Soprannome" class="filter-input">
+    <span class="filter-clear" *ngIf="searchText3.length>0" (click)="clearFilter3()">X</span>
+
+  </div>
+  <button style="margin-left: 300px; margin-bottom: 50px" class="btn" (click)="filter()">Cerca</button>
+</div>
+<table class="table table-inverse table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>CF</th>
+    <th>Cui Code</th>
+    <th>Soprannome</th>
+    <th *ngIf="this.isMED"></th>
+    <th *ngIf="this.isMED"></th>
+    <th *ngIf="this.isOPS"></th>
+    <th *ngIf="this.isOPS"></th>
+    <th *ngIf="this.isOPS"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let persona of persone; let i = index">
+    <td>{{persona.firstname}}</td>
+    <td>{{persona.lastname}}</td>
+    <td>{{persona.cf}}</td>
+    <td>{{persona.cui_code}}</td>
+    <td>{{persona.nicknames}}</td>
+    <td *ngIf="this.isMED">
+      <button class="btn" (click)="getReports(persona.pf_id)">Referti</button>
+    </td>
+    <td *ngIf="this.isMED">
+      <button class="btn" (click)="addReferto(persona.pf_id)">Upload Referto</button>
+    </td>
+    <td *ngIf="this.isOPS">
+      <button class="btn" (click)="getDocs(persona.pf_id)">Documenti</button>
+    </td>
+    <td *ngIf="this.isOPS">
+      <button class="btn" (click)="modificaPersona(persona.pf_id)">Modifica</button>
+    </td>
+    <td *ngIf="this.isOPS">
+      <button class="btn" (click)="addDoc(persona.pf_id)">Upload Doc</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total"
+  [nome]="nome">
+
+</app-pagination>
+</mat-card>

@@ -1,0 +1,21 @@
+
+<div class="container">
+    <h1>Upload Doc <Form></Form></h1>
+    <form [formGroup]="this.formModel" autocomplete="off" (submit)="onSubmit()">
+        <div class="form-group required">
+            <label>Titolo</label>
+                <input type="text" class="form-control" formControlName="Titolo" required>
+          </div>
+
+
+      <div>
+          <label>PDF</label>
+         <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+      </div>
+          <button style="align-content: center; margin-bottom: 20px;" type="submit" class="btn btn-middle btn-success" [disabled] = "!this.pdfChosen">Submit</button>
+
+    </form>
+</div>
+
+
+

@@ -1,0 +1,56 @@
+
+<div class="container">
+    <h1>Update Doc <Form></Form></h1>
+    <form [formGroup]="this.formModel" autocomplete="off" (submit)="onSubmit()">
+        <div class="form-group required">
+            <label>Tipologia</label>
+                <input type="text" class="form-control" formControlName="Tipologia" required>
+          </div>
+        <div class="form-group required">
+            <label>Entity</label>
+                <input type="text" class="form-control" formControlName="Entity" required>
+          </div>
+        <div class="form-group required">
+            <label>Number</label>
+                <input type="text" class="form-control" formControlName="Number" required>
+          </div>
+        <div class="form-group required">
+            <label>Place Of Issue</label>
+                <input type="text" class="form-control" formControlName="Place_Of_Issue" required>
+          </div>
+        <div class="form-group required">
+            <label>Release Date</label>
+                <input matInput [matDatepicker]="picker"  class="form-control" formControlName="Release_Date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+          </div>
+        <div class="form-group required">
+            <label>Expiration Date</label>
+                <input matInput [matDatepicker]="picker1"  class="form-control" formControlName="Expiration_Date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+       <div *ngIf="formModel.hasError('dateRange')" class="alert alert-danger">
+         La data di rilascio deve essere antecedente a quella di scadenza.
+         </div>
+      <div *ngIf="formModel.get('Release_Date')?.hasError('matDatepickerParse')" class="alert alert-danger">
+         Release Date: formato non valido.
+         </div>
+      <div *ngIf="formModel.get('Expiration_Date')?.hasError('matDatepickerParse')" class="alert alert-danger">
+         Expiration Date: formato non valido.
+         </div>
+
+
+      <div>
+          <label>PDF</label>
+         <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+      </div>
+          <button style="align-content: center; margin-bottom: 20px;" type="submit" class="btn btn-middle btn-success" [disabled]="!formModel.valid">Submit</button>
+
+    </form>
+</div>
+
+
+
+

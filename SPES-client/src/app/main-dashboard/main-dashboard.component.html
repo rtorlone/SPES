@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand">
+    <span class="logo logo-left">SPES</span>
+    <span class="logo logo-right">Client</span>
+</a>
+         <ul *ngIf="this.service.roleMatch(['OPS','MED','PF'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link"><strong></strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['OPS','MED'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link" routerLink="persone"><strong>Persone Fragili</strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['OPS'])" class="navbar-nav mr-auto">
+          <li  class="nav-item">
+          <a class="nav-link" routerLink="insert-pf"><strong>Registra PF</strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['PF'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link" routerLink="permissions"><strong>Visualizza Permessi</strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['PF'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link" routerLink="persona/documenti"><strong>Visualizza Documenti</strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['PF'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link" routerLink="persona/referti"><strong>Visualizza Referti</strong></a>
+        </li></ul>
+        <ul *ngIf="this.service.roleMatch(['PF'])" class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <a class="nav-link" routerLink="persona/viewAnagrafica"><strong>Visualizza Info Personali</strong></a>
+        </li></ul>
+        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()"><strong>Logout</strong></button>
+      </nav>
+      <router-outlet></router-outlet>

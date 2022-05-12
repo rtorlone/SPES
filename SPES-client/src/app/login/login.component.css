@@ -1,0 +1,33 @@
+
+.center {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 3em;
+  background-color: #191f26;
+  margin: auto;
+}
+
+.logo-left {
+  background-color: #ff6b6b;
+  padding: 6px 10px 6px 16px;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.logo-right {
+  padding: 6px 16px 6px 6px;
+  margin-left: -5px;
+  border-radius: 8px;
+  margin: auto;
+}
+.navbar-brand {
+  margin: auto;
+}
+

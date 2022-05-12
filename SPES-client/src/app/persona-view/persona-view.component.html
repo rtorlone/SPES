@@ -1,0 +1,20 @@
+<p style="text-align: center">Nome e Cognome: <br>
+  {{this.persona.firstname}} {{this.persona.lastname}} </p>
+
+<br>
+<br>
+<br>
+<p style="text-align: center">CF: <br>
+  {{this.persona.cf}}</p>
+<br>
+<br>
+  <p style="text-align: center">
+  Nicknames:
+  <br>
+  {{this.persona.nicknames}}</p>
+<p style="text-align: center">
+  Nicknames:
+  <br>
+  {{this.persona.cui_code}}</p>
+
+  <button class="btn btn-middle btn-success" (click)="modificaPersona()" [disabled]="service.roleMatch(['MED'])">Modifica</button>

@@ -1,0 +1,28 @@
+<table class="table table-inverse table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th>#</th>
+    <th>Id</th>
+    <th>Titolo</th>
+    <th>Data di Upload</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dettaglio of carrello; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{dettaglio.report_id}}</td>
+    <td>{{dettaglio.title}}</td>
+    <td>{{dettaglio.upload_date}}</td>
+    <td>
+      <button class="btn" (click)="rimuoviRichiesta(dettaglio.report_id)">Rimuovi</button>
+    </td>
+  </tr>
+  </tbody>
+
+
+</table>
+
+<button class="btn btn-middle btn-success" (click)="onSubmit()" [disabled]="carrello==null">Conferma Richieste</button>
+
+

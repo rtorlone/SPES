@@ -1,0 +1,21 @@
+<table class="table table-inverse table-hover">
+  <thead class="thead-dark">
+    <tr>
+        <th>Utente</th>
+        <th>Data</th>
+        <th>Concedi</th>
+        <th>Nega</th>
+        <th>Referto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let permission of permissions; let i = index" (click)="clickReport(permission.report_id)">
+      <td>{{permission.user_id}}</td>
+      <td>{{permission.created}}</td>
+      <td> <button class="btn" (click)="sendPermission(permission.user_id,permission.report_id,true)">Concedi</button></td>
+      <td> <button class="btn" (click)="sendPermission(permission.user_id,permission.report_id,false)">Nega</button></td>
+      <td>{{permission.report_id}}</td>
+    </tr>
+</tbody>
+</table>
+

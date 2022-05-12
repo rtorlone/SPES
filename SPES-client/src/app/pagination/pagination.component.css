@@ -1,0 +1,23 @@
+.pagination{
+    padding:12px;
+
+}
+.pages{
+    padding: 14px;
+    display: block;
+}
+
+.btn-pageNumber{
+    min-width: 54px;
+    margin: 2px;
+    border-radius: 20px;
+    background-color: #084892;
+    color: #fff;
+
+}
+.btn-small{
+    border-radius: 20px;
+    background-color: #191f26;
+    color: #fff;
+    border: none;
+}

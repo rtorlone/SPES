@@ -1,0 +1,40 @@
+<table class="table table-inverse table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th>Titolo</th>
+    <th>Data di Upload</th>
+    <th *ngIf="this.isMED || this.isPF"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let referto of referti; let i = index" (click)="onClickReferto(referto.pf_id)">
+    <td>{{referto.title}}</td>
+    <td>{{referto.upload_date | date:'shortDate'}}</td>
+    <td *ngIf="(referto.permission && this.isMED) || (this.isPF)">
+      <button class="btn" color="primary" (click)="pdfOpen(referto.report_id)">Download</button>
+    </td>
+    <td *ngIf="(!referto.permission) && (!referto.pending) && isMED">
+      <button class="btn" (click)="updateSelectedReportsForPermissions(referto.report_id)">Richiedi Permesso</button>
+    </td>
+    <td *ngIf="referto.pending && isMED">
+      <button class="btn" disabled>In attesa</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-carrello *ngIf="showCarrello && this.isMED" (remove)="removed($event)" (empty)="empty($event)"></app-carrello>
+<button *ngIf="this.isMED" class="btn" type="button" (click)="show()">
+  <mat-icon>shopping_cart</mat-icon>
+  <span class='badge badge-warning' id='lblCartCount'>{{count}}</span></button>
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total"
+  [nome]="nome">
+
+</app-pagination>
+
+

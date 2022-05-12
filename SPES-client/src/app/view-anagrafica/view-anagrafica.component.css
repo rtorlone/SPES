@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.example-card{
+    margin: 0 auto;
+    width: 35%;
+}
+.mat-form-field{
+  margin: 3px 3px;
+}
+.mat-divider{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

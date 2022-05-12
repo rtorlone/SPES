@@ -1,0 +1,26 @@
+
+        <form [formGroup]="formModel" autocomplete="off" (submit)="onSubmit()">
+            <div class="form-group login required">
+                <label >Old Password</label>
+                <input type="password" class ="form-control login" formControlName="OldPassword">
+            </div>
+            <div formGroupName="Passwords">
+            <div class="form-group login required" >
+                <label >New Password</label>
+                <input type="password" class ="form-control login" formControlName="NewPassword">
+            </div>
+            <div class="form-group login required">
+                <label >Confirm New Password</label>
+                <input  type="password" class="form-control login" formControlName="ConfirmNewPassword">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <button type="submit" class="btn btn-middle btn-success" [disabled]="!formModel.valid">Change Password</button>
+            </div>
+        </div>
+        </form>
+
+

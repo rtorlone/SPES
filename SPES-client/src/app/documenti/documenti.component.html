@@ -1,0 +1,42 @@
+
+<table class="table table-inverse table-hover">
+  <thead class="thead-dark">
+    <tr>
+        <th>Tipologia</th>
+        <th>Data di Upload</th>
+        <th>Entità</th>
+        <th>Luogo di Rilascio</th>
+        <th>Numero</th>
+        <th>Data di Rilascio</th>
+        <th>Data di Scadenza</th>
+        <th *ngIf="this.isPF || this.isOPS"></th>
+        <th *ngIf="this.isOPS"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let documento of documenti; let i = index"  (click)="onClickReferto(documento.pf_id)">
+        <td>{{documento.tipologia}}</td>
+        <td>{{documento.upload_date | date:'shortDate'}}</td>
+        <td>{{documento.entity}}</td>
+        <td>{{documento.place_of_issue}}</td>
+        <td>{{documento.number}}</td>
+        <td>{{documento.release_date | date:'shortDate'}}</td>
+        <td>{{documento.expiration_date | date:'shortDate'}}</td>
+        <td *ngIf="this.isPF || this.isOPS "> <button class="btn" color="primary" (click)="pdfOpen(documento.id)">Download</button></td>
+        <td  *ngIf="this.isOPS"> <button class="btn" color="primary" (click)="modifica(documento.id)">Modifica</button></td>
+    </tr>
+</tbody>
+</table>
+<app-pagination
+(goPage)="goToPage($event)"
+(goPrev)="goToPrevious()"
+(goNext)="goToNext()"
+[page]="page"
+[perPage]="limit"
+[count]="total"
+[nome]="nome">
+
+</app-pagination>
+
+
+
