@@ -101,10 +101,10 @@ class DocumentService:
         document = self._repository.get_document_by_user_id(pf_id=pf_id, doc_id=doc_id, user_id=user_id)
 
         headers = {"id": document.id, "entity": document.entity, "tipologia": document.tipologia,
-                   "place_of_issue": document.place_of_issue,
+                   "place_of_issue": str(document.place_of_issue),
                    "release_date": str(document.release_date), "expiration_date": str(document.expiration_date),
                    "upload_date": str(document.upload_date), "number": str(document.number)}
-        report_response = FileResponse(document.path, headers=headers)
+        report_response = FileResponse(document.path, headers=headers, media_type="application/pdf")
 
         return report_response
 
