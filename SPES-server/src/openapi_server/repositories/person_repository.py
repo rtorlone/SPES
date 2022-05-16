@@ -57,7 +57,7 @@ class PersonRepository:
 
     def add_person(self, id: str, created_by: str, owner_id: str, is_dead: bool, death_date: date, cf: str,
                    cui_code: str,
-                   firstname: str, lastname: str, fullname: str, nicknames: str, gender: str, birth_date: date,
+                   firstname: str, lastname: str, fullname: str, email:str, nicknames: str, gender: str, birth_date: date,
                    verified: bool,
                    created: date, updated: date, sanitary_district_id: str, is_anonymous: bool, is_foreign: bool,
                    birth_city: str,
@@ -91,7 +91,7 @@ class PersonRepository:
         :return: Un oggetto di tipo Person.
         """
         with self.session_factory() as session:
-            user = User(id=user_id, username=username, pwd=pwd, role="PF")
+            user = User(id=user_id, username=username, pwd=pwd, email=email, role="PF")
             person = Person(id=id,
                             created_by=created_by,
                             owner_id=owner_id,

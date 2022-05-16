@@ -25,7 +25,7 @@ sudo apt install python3-venv
 pip install -r requirements.txt 
 ```
 ### /src/openapi_server/config.yml
-In questo file yaml sono racchiuse le principali configurazioni riguardati il DB usato dalla libreria ORM _SQLAlchemy_ e _redis_.
+In questo file yaml sono racchiuse le principali configurazioni riguardanti il DB usato dalla libreria ORM _SQLAlchemy_ e _redis_.
 
 Se si desidera non eseguire SQL da file allo startup del server porre ***startup_sql_path*** uguale a **null**.
 Si specifica inoltre che in caso di malconfigurazione di redis non verranno sollevate eccezioni allo startup del server ma bensi durante le chiamate API relative alla sessione.

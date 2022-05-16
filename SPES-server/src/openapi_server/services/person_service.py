@@ -40,6 +40,7 @@ class PersonService:
                                              owner_id=creator_id,
                                              is_dead=item.is_dead,
                                              death_date=item.death_date,
+                                             email = item.email,
                                              cf=item.cf,
                                              cui_code=item.cui_code,
                                              firstname=item.firstname,

@@ -18,7 +18,19 @@
           <mat-label>Cognome</mat-label>
           <input matInput placeholder="Rossi" formControlName="lastname">
         </mat-form-field>
+
       </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Rossi" formControlName="email">
+        </mat-form-field>
+
+      </p>
+      <div *ngIf="PFForm.controls['email'].invalid && (PFForm.controls['email'].dirty || PFForm.controls['email'].touched)"
+           class="alert alert-danger">
+        Email Non valida
+      </div>
       <p>
         <mat-checkbox class="example-margin" name="is_anonymous" formControlName="is_anonymous"
                       (change)="anonymousCheckBoxChange($event)">Anonimo
