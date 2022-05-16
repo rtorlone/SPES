@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ../SPES-server
+      dockerfile: Dockerfile_1
+    depends_on:
+      - postgres
+    ports:
+      - target: 8080
+        published: 8080
+    volumes:
+      - ../SPES-server:/home/SPES-server
+
+    working_dir: /home/SPES-server/src/openapi_server
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --log-level debug --log-config  /home/SPES-server/src/openapi_server/log-config.yml
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - target: 8080
+        published: 8090
+    depends_on:
+      - postgres
+
+  cache:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - cache:/data
+
+  client:
+    image: node:12.22.12-buster-slim
+    volumes:
+      - ../SPES-client:/home/client
+    working_dir: /home/client
+    command: sh -c "npm install && npm install -g @angular/cli && ng serve --host 0.0.0.0"
+    ports:
+      - 4200:4200
+    depends_on:
+      - server
+      
+volumes:
+  cache:
+    driver: local

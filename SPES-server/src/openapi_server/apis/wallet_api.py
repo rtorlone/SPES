@@ -116,8 +116,7 @@ async def get_identification_document_by_id(
             return document_service.get_document_by_user_id(pf_id=id_pf, doc_id=doc_id, user_id=user_id)
         else:
             return Response(status_code=status.HTTP_403_FORBIDDEN)
-    except Exception 
-    as e:
+    except Exception as e:
         print(e.__class__)
         print(e)
         
