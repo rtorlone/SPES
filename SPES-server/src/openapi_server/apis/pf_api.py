@@ -31,6 +31,7 @@ from containers import Container
 from dependency_injector.wiring import inject, Provide
 
 from services.user_service import UserService
+from services.email_service import EmailService
 
 router = APIRouter()
 
@@ -126,7 +127,8 @@ async def register_pf(
         token_bearerAuth: TokenModel = Security(
             get_token_bearerAuth
         ),
-        person_service: PersonService = Depends(Provide[Container.person_service])
+        person_service: PersonService = Depends(Provide[Container.person_service]),
+        email_service: EmailService = Depends(Provide[Container.email_service])
 
 ) -> str:
     """- Effettua la registrazione di una PFnel sistema, inserendo i suoi dati anagrafici. Tale registrazione può essere effettuata solamente dagli OPS. """
@@ -136,6 +138,7 @@ async def register_pf(
 
     if role == "OPS":
         pf_info = person_service.create_person(user_id, pf_info)
+        await email_service.send_credentials(dest=pf_info.email, username=pf_info.username, password=pf_info.password)
         return Response(status_code=status.HTTP_201_CREATED, content=pf_info.json(), media_type="aplication/json")
     else:
         return Response(status_code=status.HTTP_403_FORBIDDEN)

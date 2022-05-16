@@ -1,6 +1,7 @@
 """Containers module."""
-import redis as redis
+
 from dependency_injector import containers, providers
+from fastapi_mail import ConnectionConfig, FastMail
 
 from database.database import Database
 from database.redis import ReportSessionRedis
@@ -11,6 +12,7 @@ from services.permission_service import PermissionService
 from services.person_service import PersonService
 from services.report_service import ReportService
 from services.user_service import UserService
+from services.email_service import EmailService
 from repositories.user_repository import UserRepository
 from repositories.report_repository import ReportRepository
 
@@ -20,10 +22,24 @@ class Container(containers.DeclarativeContainer):
         modules=["apis.pf_api", "apis.report_api", "apis.wallet_api", "apis.auth_api", "security_api"])
 
     config = providers.Configuration(yaml_files=["config.yml"])
+
     db = providers.Singleton(Database, db_url=config.db.url, drop_on_startup=config.db.drop_on_startup,
                              startup_sql_path=config.db.startup_sql_path)
 
-    reportSessionRedis = providers.Singleton(ReportSessionRedis, host=config.redis.host, port=config.redis.port, db=config.redis.db, password=config.redis.password)
+    reportSessionRedis = providers.Singleton(ReportSessionRedis, host=config.redis.host, port=config.redis.port,
+                                             db=config.redis.db, password=config.redis.password)
+
+    conf = providers.Singleton(ConnectionConfig,
+                               MAIL_USERNAME=config.email.username,
+                               MAIL_PASSWORD=config.email.password,
+                               MAIL_FROM=config.email.mail,
+                               MAIL_PORT=config.email.port,
+                               MAIL_SERVER=config.email.server,
+                               MAIL_TLS=config.email.tls,
+                               MAIL_SSL=config.email.ssl,
+                               )
+
+    fast_mail = providers.Singleton(FastMail, config=conf)
 
     """
     Definizioni classi singleton repositories.
@@ -76,4 +92,9 @@ class Container(containers.DeclarativeContainer):
     permission_service = providers.Factory(
         PermissionService,
         report_repository=report_repository,
+    )
+
+    email_service = providers.Factory(
+        EmailService,
+        fast_email=fast_mail.provided,
     )

@@ -32,6 +32,7 @@ class PfInfo(BaseModel):
     lastname: Optional[str] = None
     fullname: Optional[str] = None
     gender: Optional[GenderEnum] = None
+    email: Optional[EmailStr] = None
     nicknames: Optional[str] = None
     birth_date: Optional[date] = Field(None, description="La data non può essere antecedente al giorno corrente")
     birth_nation_id: Optional[str] = Field("ITA", description="Questo campo adotta lo standard ISO 3166-1 Alpha3")
@@ -182,6 +183,7 @@ class PfUserInfo(BaseModel):
     PfUserInfo - Modello che definisce le credenziali di accesso della PF.
 
     """
+    email: EmailStr
     username: str
     password: str
 

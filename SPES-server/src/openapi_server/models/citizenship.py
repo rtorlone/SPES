@@ -12,7 +12,7 @@ class Citizenship(BaseModel):
     Citizenship - Modello che definisce la cittadinza della PF.
 
     """
-    nation_id: str = Field(description="Questo campo adotta lo standard ISO 3166-1 Alpha3")
+    nation_id: str = Field("ITA", description="Questo campo adotta lo standard ISO 3166-1 Alpha3")
     from_date: date = Field(description="La data non può essere antecedente al giorno corrente")
 
     @validator('nation_id')
