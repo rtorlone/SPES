@@ -79,7 +79,7 @@ class PersonService:
             self._repository.add_citizenship(user_id=creator_id, pf_id=person.id, items=item.citizenship_list,
                                              ids=lst_ids, today=today)
 
-        return PfUserInfo(pf_id=person.id, username=username, password=plain_pwd)
+        return PfUserInfo(pf_id=person.id, email=item.email, username=username, password=plain_pwd)
 
     def get_person(self, pf_id: str) -> PfInfoWithIds:
         """
