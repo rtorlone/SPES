@@ -1,17 +1,18 @@
 db:
   url: "postgresql://root:root@localhost/spes"
-  drop_on_startup: true
-  startup_sql_path: "startup.sql"
+  drop_on_startup: false
+  startup_sql_path: null
 redis:
   host: "localhost"
   port: 6379
   db: 1
   password: "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"
 email:
-  username: "fragilepersona"
-  mail: "fragilepersona@gmail.com"
-  password: "SPESmail1"
+  username: ""
+  mail: ""
+  password: ""
   port: 587
   server: "smtp.gmail.com"
   tls: true
   ssl: false
+  enable: false

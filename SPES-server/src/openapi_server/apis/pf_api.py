@@ -138,7 +138,8 @@ async def register_pf(
 
     if role == "OPS":
         pf_info = person_service.create_person(user_id, pf_info)
-        await email_service.send_credentials(dest=pf_info.email, username=pf_info.username, password=pf_info.password)
+        if email_service.enable:
+            await email_service.send_credentials(dest=pf_info.email, username=pf_info.username, password=pf_info.password)
         return Response(status_code=status.HTTP_201_CREATED, content=pf_info.json(), media_type="aplication/json")
     else:
         return Response(status_code=status.HTTP_403_FORBIDDEN)

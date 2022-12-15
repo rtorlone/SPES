@@ -7,8 +7,9 @@ class EmailService:
 
     """
 
-    def __init__(self, fast_email: FastMail) -> None:
+    def __init__(self, fast_email: FastMail, enable: bool = True) -> None:
         self._fast_email: FastMail = fast_email
+        self.enable: bool = enable
 
     def send_credentials(self, dest: str, username: str, password: str) -> None:
         """

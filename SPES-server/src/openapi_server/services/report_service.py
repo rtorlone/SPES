@@ -1,10 +1,13 @@
 """Services module."""
 import os
 import uuid
+from io import BytesIO
 
 from datetime import date
 
 from typing import List
+
+from PIL import Image
 
 from fastapi import UploadFile
 
@@ -25,6 +28,8 @@ class ReportService:
 
     BASE_PATH = "../../reports/"
     SUPPORTED_MEDIA_TYPE = ["application/pdf"]
+    SUPPORTED_IMAGE_TYPE = ["image/png", "image/jpeg", "image/jpg"]
+    SUPPORTED_MEDIA_TYPE.extend(SUPPORTED_IMAGE_TYPE)
 
     def __init__(self, report_repository: ReportRepository, session_repository: ReportSessionRedis) -> None:
         self._repository: ReportRepository = report_repository
@@ -128,7 +133,7 @@ class ReportService:
         report_response = FileResponse(report.path, headers=headers, media_type="application/pdf")
         return report_response
 
-    def upload_report(self, user_id: str, pf_id: str, title: str, file: UploadFile) -> ReportOnlyId:
+    def upload_report(self, user_id: str, pf_id: str, title: str, files: List[UploadFile]) -> ReportOnlyId:
         """
         Salva il report sul filesystem del server e i relativi metadati nel repository.
 
@@ -138,18 +143,31 @@ class ReportService:
         :param file: Il file da salvare nel filesystem.
         :return: Un oggetto ReportOnlyId
         """
+
         report_id = str(uuid.uuid4())
         file_path = self.BASE_PATH + report_id + ".pdf"
-        contents = file.file.read()
+
+        image_list = []
+        for file in files:
+            if file.content_type not in self.SUPPORTED_MEDIA_TYPE:
+                raise FormatReportError(entity_id=report_id, media_type=file.content_type)
+
+            if file.content_type in self.SUPPORTED_IMAGE_TYPE:
+                contents = file.file.read()
+                image = Image.open(BytesIO(contents)).convert('RGB')
+                image_list.append(image)
+
+        if len(image_list) > 0 and len(image_list) == len(files):
+            image_list[0].save(file_path, save_all=True, append_images=image_list)
+        elif len(image_list) == 0 and len(files) == 1:
+            contents = files[0].file.read()
+            with open(file_path, 'wb') as f:
+                f.write(contents)
+                f.close()
+        else:
+            raise FormatReportError(entity_id=report_id, media_type='')
+
         if title is None: title = report_id
-
-        if file.content_type not in self.SUPPORTED_MEDIA_TYPE:
-            raise FormatReportError(entity_id=report_id, media_type=file.content_type)
-
-        # Salva su filesystem
-        with open(file_path, 'wb') as f:
-            f.write(contents)
-            f.close()
 
         today = date.today()
 

@@ -97,4 +97,5 @@ class Container(containers.DeclarativeContainer):
     email_service = providers.Factory(
         EmailService,
         fast_email=fast_mail.provided,
+	enable=config.email.enable,
     )

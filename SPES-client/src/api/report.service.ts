@@ -758,17 +758,17 @@ export class ReportService {
 
     /**
      * Upload di un referto medico.
-     * - Effettua l\&#39;upload di un referto medico nel repository della persona fragile.
+     * - Effettua l\&#39;upload di un referto medico nel repository della persona fragile. Tale richiesta può essere effettuata solamente dai MED.
      * @param referto
      * @param pfId ID della PF.
      * @param title Titolo referto.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public uploadMedicalReportReportsUploadPost(referto: Blob, pfId?: string, title?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<ReportOnlyId>;
-    public uploadMedicalReportReportsUploadPost(referto: Blob, pfId?: string, title?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<ReportOnlyId>>;
-    public uploadMedicalReportReportsUploadPost(referto: Blob, pfId?: string, title?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<ReportOnlyId>>;
-    public uploadMedicalReportReportsUploadPost(referto: Blob, pfId?: string, title?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public uploadMedicalReportReportsUploadPost(referto: Array<Blob>, pfId?: string, title?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<ReportOnlyId>;
+    public uploadMedicalReportReportsUploadPost(referto: Array<Blob>, pfId?: string, title?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<ReportOnlyId>>;
+    public uploadMedicalReportReportsUploadPost(referto: Array<Blob>, pfId?: string, title?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<ReportOnlyId>>;
+    public uploadMedicalReportReportsUploadPost(referto: Array<Blob>, pfId?: string, title?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (referto === null || referto === undefined) {
             throw new Error('Required parameter referto was null or undefined when calling uploadMedicalReportReportsUploadPost.');
         }
@@ -824,8 +824,14 @@ export class ReportService {
         if (title !== undefined) {
             localVarFormParams = localVarFormParams.append('title', <any>title) as any || localVarFormParams;
         }
-        if (referto !== undefined) {
-            localVarFormParams = localVarFormParams.append('referto', <any>referto) as any || localVarFormParams;
+        if (referto) {
+            if (localVarUseForm) {
+                referto.forEach((element) => {
+                    localVarFormParams = localVarFormParams.append('referto', <any>element) as any || localVarFormParams;
+            })
+            } else {
+                localVarFormParams = localVarFormParams.append('referto', [...referto].join(COLLECTION_FORMATS['csv'])) as any || localVarFormParams;
+            }
         }
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -839,10 +845,11 @@ export class ReportService {
             }
         }
 
-        return this.httpClient.post<ReportOnlyId>(`${this.configuration.basePath}/reports/upload`,
-            localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
+        let localVarPath = `/reports/upload`;
+        return this.httpClient.request<ReportOnlyId>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                body: localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

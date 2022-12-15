@@ -275,7 +275,7 @@ async def set_medical_reports_permissions(
 async def upload_medical_report(
         pf_id: str = Form(None, description="ID della PF."),
         title: str = Form(None, description="Titolo referto."),
-        referto: UploadFile = File(...),
+        referto: List[UploadFile] = File(...),
         token_bearerAuth: TokenModel = Security(
             get_token_bearerAuth
         ),
@@ -288,7 +288,7 @@ async def upload_medical_report(
 
     if user_role == "MED":
         try:
-            return report_service.upload_report(user_id=user_id, pf_id=pf_id, title=title, file=referto)
+            return report_service.upload_report(user_id=user_id, pf_id=pf_id, title=title, files=referto)
         except UploadReportError:
             return Response(status_code=status.HTTP_400_BAD_REQUEST)
         except FormatReportError as err:
@@ -302,6 +302,7 @@ async def upload_medical_report(
                                                                  entity_id=err.entity_id).json(),
                             media_type="application/json")
         except Exception as err:
+            print(err)
             return Response(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             content=GenericErrorResponse(description=None, args=None).json(),
                             media_type="application/json")

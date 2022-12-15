@@ -73,7 +73,6 @@ export class UploadDocComponent implements OnInit {
         },
         error: err => {
           console.log(err);
-          console.log(err.statusText);
           this.toastr.error(err.statusText, 'Upload Failed.');
         },
         complete: () => {
@@ -87,7 +86,8 @@ export class UploadDocComponent implements OnInit {
 
 
   public uploadFinished = (event: any) => {
-    this.responsePdf = event;
+
+    this.responsePdf = <File>event[0];
     this.pdfChosen = true;
   }
   public uploadImage = (event: any) => {
@@ -95,7 +95,6 @@ export class UploadDocComponent implements OnInit {
   }
   public parseDescrizione = (event: any) => {
     this.descrizione = event;
-    console.log(event);
 
 
   }
