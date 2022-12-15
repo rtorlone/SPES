@@ -19,6 +19,8 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { DocInfo } from '../model/docInfo';
+// @ts-ignore
 import { DocPartialInfo } from '../model/docPartialInfo';
 // @ts-ignore
 import { HTTPValidationError } from '../model/hTTPValidationError';
@@ -39,11 +41,15 @@ export class WalletService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
         if (typeof this.configuration.basePath !== 'string') {
+            if (Array.isArray(basePath) && basePath.length > 0) {
+                basePath = basePath[0];
+            }
+
             if (typeof basePath !== 'string') {
                 basePath = this.basePath;
             }
@@ -66,6 +72,7 @@ export class WalletService {
         return false;
     }
 
+    // @ts-ignore
     private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
         if (typeof value === "object" && value instanceof Date === false) {
             httpParams = this.addToHttpParamsRecursive(httpParams, value);
@@ -85,8 +92,7 @@ export class WalletService {
                 (value as any[]).forEach( elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
             } else if (value instanceof Date) {
                 if (key != null) {
-                    httpParams = httpParams.append(key,
-                        (value as Date).toISOString().substr(0, 10));
+                    httpParams = httpParams.append(key, (value as Date).toISOString().substr(0, 10));
                 } else {
                    throw Error("key may not be null if value is Date");
                 }
@@ -103,8 +109,8 @@ export class WalletService {
     }
 
     /**
-     * Restituisce il documento indetificativo della PF in base all&amp;#39;ID.
-     * - Restituisce il documento indetificativo della PF in base all&amp;#39;ID.
+     * Restituisce il documento indetificativo della PF in base all\&#39;ID.
+     * - Restituisce il documento indetificativo della PF in base all\&#39;ID. Tale operazione può essere effettuata solamente dagli OPS e PF.
      * @param idPf ID univoco della persona fragile
      * @param docId ID univoco del documento identificativo.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -163,14 +169,14 @@ export class WalletService {
 
     /**
      * Restituisce la lista dei documenti identificativi associati alla PF
-     * - Restituisce la lista dei documenti identificativi associati alla PF.
+     * - Restituisce la lista dei documenti identificativi associati alla PF. Tale operazione può essere effettuata solamente dagli OPS e PF.
      * @param idPf ID univoco della persona fragile
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DocPartialInfo>>;
-    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DocPartialInfo>>>;
-    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DocPartialInfo>>>;
+    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<DocInfo>>;
+    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<DocInfo>>>;
+    public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<DocInfo>>>;
     public getIdentificationDocumentsWalletPfIdPfDocsGet(idPf: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (idPf === null || idPf === undefined) {
             throw new Error('Required parameter idPf was null or undefined when calling getIdentificationDocumentsWalletPfIdPfDocsGet.');
@@ -228,23 +234,23 @@ export class WalletService {
 
     /**
      * Aggiorna il documento identificativo della persona fragile.
-     * - Effettua un aggiornamento del documento indentificativo della PF (chiamata soggetta a rimozione nel caso si volesse mantenere uno storico dei documenti identificativi per tipologia).
+     * - Effettua un aggiornamento del documento indentificativo della PF (chiamata soggetta a rimozione nel caso si volesse mantenere uno storico dei documenti identificativi per tipologia). Tale operazione può essere effettuata solamente dagli OPS.
      * @param idPf ID univoco della persona fragile
      * @param docId ID univoco del documento identificativo.
-     * @param doc
-     * @param tipologia Tipologia di documento.
+     * @param tipologia Tipologia di documento
      * @param entity Ente di rilascio.
      * @param number Numero del documento.
      * @param placeOfIssue Luogo di rilascio.
      * @param releaseDate Data di rilascio.
      * @param expirationDate Data di scadenza.
+     * @param doc
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, doc?: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DocPartialInfo>;
-    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, doc?: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DocPartialInfo>>;
-    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, doc?: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DocPartialInfo>>;
-    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, doc?: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, doc?: Array<Blob>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DocPartialInfo>;
+    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, doc?: Array<Blob>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DocPartialInfo>>;
+    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, doc?: Array<Blob>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DocPartialInfo>>;
+    public updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf: string, docId: string, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, doc?: Array<Blob>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (idPf === null || idPf === undefined) {
             throw new Error('Required parameter idPf was null or undefined when calling updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut.');
         }
@@ -315,8 +321,14 @@ export class WalletService {
         if (expirationDate !== undefined) {
             localVarFormParams = localVarFormParams.append('expiration_date', <any>expirationDate) as any || localVarFormParams;
         }
-        if (doc !== undefined) {
-            localVarFormParams = localVarFormParams.append('doc', <any>doc) as any || localVarFormParams;
+        if (doc) {
+            if (localVarUseForm) {
+                doc.forEach((element) => {
+                    localVarFormParams = localVarFormParams.append('doc', <any>element) as any || localVarFormParams;
+            })
+            } else {
+                localVarFormParams = localVarFormParams.append('doc', [...doc].join(COLLECTION_FORMATS['csv'])) as any || localVarFormParams;
+            }
         }
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -343,6 +355,7 @@ export class WalletService {
         );
     }
 
+
     /**
      * Upload dei documenti identificativi di una PF.
      * - Effettua l\&#39;upload di un documento identificativo della persona fragile. Tale operazione può essere effettuata solamente dagli OPS.
@@ -357,10 +370,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DocPartialInfo>;
-    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DocPartialInfo>>;
-    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DocPartialInfo>>;
-    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Blob, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Array<Blob>, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<DocPartialInfo>;
+    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Array<Blob>, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<DocPartialInfo>>;
+    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Array<Blob>, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<DocPartialInfo>>;
+    public uploadIdentificationDocumentWalletPfIdPfDocsUploadPost(idPf: string, doc: Array<Blob>, tipologia?: string, entity?: string, number?: string, placeOfIssue?: string, releaseDate?: string, expirationDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (idPf === null || idPf === undefined) {
             throw new Error('Required parameter idPf was null or undefined when calling uploadIdentificationDocumentWalletPfIdPfDocsUploadPost.');
         }
@@ -431,8 +444,14 @@ export class WalletService {
         if (expirationDate !== undefined) {
             localVarFormParams = localVarFormParams.append('expiration_date', <any>expirationDate) as any || localVarFormParams;
         }
-        if (doc !== undefined) {
-            localVarFormParams = localVarFormParams.append('doc', <any>doc) as any || localVarFormParams;
+        if (doc) {
+            if (localVarUseForm) {
+                doc.forEach((element) => {
+                    localVarFormParams = localVarFormParams.append('doc', <any>element) as any || localVarFormParams;
+            })
+            } else {
+                localVarFormParams = localVarFormParams.append('doc', [...doc].join(COLLECTION_FORMATS['csv'])) as any || localVarFormParams;
+            }
         }
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';

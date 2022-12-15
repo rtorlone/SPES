@@ -140,7 +140,7 @@ class ReportService:
         :param user_id: L'id dello user che vuole inserire il report.
         :param pf_id: l'id della persona fragile.
         :param title: Il titolo del referto medico.
-        :param file: Il file da salvare nel filesystem.
+        :param files: Il file da salvare nel filesystem.
         :return: Un oggetto ReportOnlyId
         """
 
@@ -158,7 +158,7 @@ class ReportService:
                 image_list.append(image)
 
         if len(image_list) > 0 and len(image_list) == len(files):
-            image_list[0].save(file_path, save_all=True, append_images=image_list)
+            image_list[0].save(file_path, save_all=True, append_images=image_list[1:])
         elif len(image_list) == 0 and len(files) == 1:
             contents = files[0].file.read()
             with open(file_path, 'wb') as f:

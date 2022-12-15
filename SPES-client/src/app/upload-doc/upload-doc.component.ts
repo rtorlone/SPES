@@ -84,10 +84,9 @@ export class UploadDocComponent implements OnInit {
 
   }
 
-
   public uploadFinished = (event: any) => {
 
-    this.responsePdf = <File>event[0];
+    this.responsePdf = event;
     this.pdfChosen = true;
   }
   public uploadImage = (event: any) => {

@@ -54,7 +54,7 @@ async def update_identification_document_by_id(
         place_of_issue: str = Form(None, description="Luogo di rilascio."),
         release_date: str = Form(None, description="Data di rilascio."),
         expiration_date: str = Form(None, description="Data di scadenza."),
-        doc: Optional[UploadFile] = File(None),
+        doc: Optional[List[UploadFile]] = File(None),
         token_bearerAuth: TokenModel = Security(
             get_token_bearerAuth
         ),
@@ -70,7 +70,7 @@ async def update_identification_document_by_id(
                                                     entity=entity, number=number,
                                                     place_of_issue=place_of_issue, release_date=release_date,
                                                     expiration_date=expiration_date,
-                                                    file=doc)
+                                                    files=doc)
         except DocumentNotFoundError:
             return Response(status_code=status.HTTP_404_NOT_FOUND)
         except Exception:
@@ -177,7 +177,7 @@ async def upload_identification_document(
         place_of_issue: str = Form(None, description="Luogo di rilascio."),
         release_date: str = Form(None, description="Data di rilascio."),
         expiration_date: str = Form(None, description="Data di scadenza."),
-        doc: UploadFile = File(...),
+        doc: List[UploadFile] = File(...),
         token_bearerAuth: TokenModel = Security(
             get_token_bearerAuth
         ),
@@ -193,7 +193,7 @@ async def upload_identification_document(
             return document_service.upload_document(user_id=user_id, pf_id=id_pf, tipologia=tipologia, entity=entity,
                                                     number=number, place_of_issue=place_of_issue,
                                                     release_date=release_date, expiration_date=expiration_date,
-                                                    file=doc)
+                                                    files=doc)
         except UploadDocumentError:
             return Response(status_code=status.HTTP_400_BAD_REQUEST)
         except FormatReportError:

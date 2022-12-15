@@ -2,13 +2,16 @@
 
 import os
 import uuid
+
+from io import BytesIO
 from datetime import date
-from typing import List
+from typing import List, Optional
+
+from PIL import Image
 
 from fastapi import UploadFile
 from fastapi.responses import FileResponse
 from sqlalchemy.exc import IntegrityError
-
 from models.doc_info import DocInfo, DocPartialInfo
 from repositories.document_repository import DocumentRepository
 from repositories.repository_exceptions import FormatReportError, DocumentNotFoundError, \
@@ -22,6 +25,8 @@ class DocumentService:
 
     BASE_PATH = "../../documents/"
     SUPPORTED_MEDIA_TYPE = ["application/pdf"]
+    SUPPORTED_IMAGE_TYPE = ["image/png", "image/jpeg", "image/jpg"]
+    SUPPORTED_MEDIA_TYPE.extend(SUPPORTED_IMAGE_TYPE)
 
     def __init__(self, document_repository: DocumentRepository) -> None:
         self._repository: DocumentRepository = document_repository
@@ -107,7 +112,7 @@ class DocumentService:
         return report_response
 
     def upload_document(self, user_id: str, pf_id: str, tipologia: str, entity: str, number: str, place_of_issue: str,
-                        release_date: date, expiration_date: date, file: UploadFile) -> DocPartialInfo:
+                        release_date: date, expiration_date: date, files: List[UploadFile]) -> DocPartialInfo:
         """
         Salva il report sul filesystem del server e i relativi metadati nel repository.
 
@@ -119,20 +124,32 @@ class DocumentService:
         :param tipologia:
         :param user_id:
         :param pf_id
-        :param file:
+        :param files:
         :return:
         """
         doc_id = str(uuid.uuid4())
         file_path = self.BASE_PATH + doc_id + ".pdf"
-        contents = file.file.read()
 
-        if file.content_type not in self.SUPPORTED_MEDIA_TYPE:
-            raise FormatReportError(entity_id=doc_id, media_type=file.content_type)
+        image_list = []
 
-        # Salva su filesystem
-        with open(file_path, 'wb') as f:
-            f.write(contents)
-            f.close()
+        for file in files:
+            if file.content_type not in self.SUPPORTED_MEDIA_TYPE:
+                raise FormatReportError(entity_id=doc_id, media_type=file.content_type)
+
+            if file.content_type in self.SUPPORTED_IMAGE_TYPE:
+                contents = file.file.read()
+                image = Image.open(BytesIO(contents)).convert('RGB')
+                image_list.append(image)
+
+        if len(image_list) > 0 and len(image_list) == len(files):
+            image_list[0].save(file_path, save_all=True, append_images=image_list[1:])
+        elif len(image_list) == 0 and len(files) == 1:
+            contents = files[0].file.read()
+            with open(file_path, 'wb') as f:
+                f.write(contents)
+                f.close()
+        else:
+            raise FormatReportError(entity_id=report_id, media_type='')
 
         today = date.today()
 
@@ -154,7 +171,7 @@ class DocumentService:
 
     def update_document(self, upload_by: str, pf_id: str, doc_id: str, tipologia: str, entity: str, number: str,
                         place_of_issue: str, release_date: date, expiration_date: date,
-                        file: UploadFile) -> DocPartialInfo:
+                        files: Optional[List[UploadFile]]) -> DocPartialInfo:
         """
         Aggiorna il documento, salvando il nuovo file nel filesystem e aggiornando i metadati del repository.
 
@@ -168,17 +185,33 @@ class DocumentService:
         :param release_date: 
         :param expiration_date: 
         :param upload_date: 
-        :param file: 
+        :param files:
         :return: 
         """
         file_path = self.BASE_PATH + doc_id + ".pdf"
 
-        # Salva su filesystem (sovrascrive)
-        if file:
-            contents = file.file.read()
-            with open(file_path, 'wb') as f:
-                f.write(contents)
-                f.close()
+        if files:
+            image_list = []
+            for file in files:
+                if file.content_type not in self.SUPPORTED_MEDIA_TYPE:
+                    raise FormatReportError(entity_id=doc_id, media_type=file.content_type)
+
+                if file.content_type in self.SUPPORTED_IMAGE_TYPE:
+                    contents = file.file.read()
+                    image = Image.open(BytesIO(contents)).convert('RGB')
+                    image_list.append(image)
+
+            if len(image_list) > 0 and len(image_list) == len(files):
+                # Salva su filesystem (sovrascrive)
+                image_list[0].save(file_path, save_all=True, append_images=image_list[1:])
+            elif len(image_list) == 0 and len(files) == 1:
+                contents = files[0].file.read()
+                # Salva su filesystem (sovrascrive)
+                with open(file_path, 'wb') as f:
+                    f.write(contents)
+                    f.close()
+            else:
+                raise FormatReportError(entity_id=doc_id, media_type='')
 
         today = date.today()
 

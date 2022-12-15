@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpContext} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {WalletService} from "../../api/wallet.service";
 import {ToastrService} from "ngx-toastr";
 import {AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
+import {Observable} from "rxjs";
+import {DocPartialInfo} from "../../model/docPartialInfo";
 
 @Component({
   selector: 'app-update-doc',
@@ -90,7 +92,9 @@ export class UpdateDocComponent implements OnInit {
 
 
     let idPf = String(localStorage.getItem("idPf"))
-    this.service.updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf, this.docToUpdate, this.responsePdf, this.formModel.value.Tipologia, this.formModel.value.Entity, this.formModel.value.Number, this.formModel.value.Place_Of_Issue, releaseDate, exp_date).subscribe(
+    console.log(idPf);
+
+    this.service.updateIdentificationDocumentByIdWalletPfIdPfDocsDocIdPut(idPf, this.docToUpdate, this.formModel.value.Tipologia, this.formModel.value.Entity, this.formModel.value.Number, this.formModel.value.Place_Of_Issue, releaseDate, exp_date, this.responsePdf).subscribe(
       {
         next: value => {
           console.log(value)

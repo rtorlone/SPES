@@ -23,7 +23,6 @@ export class UploadComponent implements OnInit {
       return;
     }
 
-
     this.onUploadFinished.emit(Array.from(files as ArrayLike<File>));
 
   }
